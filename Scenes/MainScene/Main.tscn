@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpvb08ytxb0su"]
+
+[ext_resource type="Theme" uid="uid://dtq5jeimb7oqv" path="res://Scenes/MainScene/main_theme.tres" id="1_be64u"]
+[ext_resource type="FontFile" uid="uid://4jvnfaabhj7u" path="res://assets/Fonts/Xolonium-Regular.ttf" id="1_lte07"]
+[ext_resource type="Theme" uid="uid://bwlpmef5cx7qf" path="res://Scenes/MainScene/new_theme.tres" id="1_vvr8l"]
+
+[sub_resource type="GDScript" id="GDScript_kp27y"]
+script/source = "extends Control
+
+var level_1 = \"res://Scenes/WorldScene/level1/level1.tscn\"
+
+func _ready():
+	pass # Replace with function body.
+
+
+func _on_start_button_pressed():
+	get_tree().change_scene_to_file(level_1)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_rii57"]
+font_size = 50
+font_color = Color(0.376471, 1, 1, 1)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_be64u")
+script = SubResource("GDScript_kp27y")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+visible = false
+top_level = true
+layout_mode = 0
+offset_left = 478.0
+offset_right = 1442.0
+offset_bottom = 1080.0
+theme = ExtResource("1_vvr8l")
+
+[node name="MainText" type="Label" parent="GridContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_vvr8l")
+theme_override_colors/font_color = Color(0, 0.882353, 0.988235, 1)
+theme_override_fonts/font = ExtResource("1_lte07")
+theme_override_font_sizes/font_size = 50
+text = "Space Shooter
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_right = 216.0
+offset_bottom = 648.0
+grow_horizontal = 2
+
+[node name="StartButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.5
+offset_top = -43.0
+offset_right = 88.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_lte07")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 392.0
+offset_bottom = 102.0
+text = "Space Shooter"
+label_settings = SubResource("LabelSettings_rii57")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/StartButton" to="." method="_on_start_button_pressed"]
