@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvu11pxuxrujc"]
+
+[ext_resource type="Script" path="res://Scenes/base_to_defend/base1/base1.gd" id="1_bg5rh"]
+[ext_resource type="Texture2D" uid="uid://tne56666axwo" path="res://icon.svg" id="1_mdaic"]
+
+[node name="Base1" type="RigidBody2D"]
+collision_mask = 0
+script = ExtResource("1_bg5rh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_mdaic")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1.3113e-06, 1.66557)
+scale = Vector2(1.36513, 1.33117)
+polygon = PackedVector2Array(-31, -39, 30, -39, 37, -32, 38, 31, 32, 38, -30, 38, -38, 31, -38, -31)
