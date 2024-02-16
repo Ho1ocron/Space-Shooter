@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://da5e8soes3xkx"]
+
+[ext_resource type="Texture2D" uid="uid://b20ildu7n7g1c" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_05-1024x1024.png" id="1_gngyp"]
+[ext_resource type="Texture2D" uid="uid://dllr3oa3fh38p" path="res://assets/Player/PlayerSprites/HPBar/tile000.png" id="2_mnubq"]
+[ext_resource type="PackedScene" uid="uid://ca8vbjtsvsagd" path="res://Scenes/PlayerScene/PlayerShipScene/Player.tscn" id="2_pu1u6"]
+[ext_resource type="Texture2D" uid="uid://bka82q51gotuj" path="res://assets/Player/PlayerSprites/HPBar/tile001.png" id="3_5f7fd"]
+[ext_resource type="Script" path="res://Scenes/WorldScene/level1/HealthBar.gd" id="4_823mw"]
+[ext_resource type="Script" path="res://Scenes/WorldScene/level1/Boost.gd" id="5_mgxdm"]
+[ext_resource type="PackedScene" uid="uid://bgi1nedgslrhf" path="res://Scenes/EnemiesScenes/Enemy1/enemy_1.tscn" id="7_fol70"]
+[ext_resource type="Texture2D" uid="uid://dlcnxhvc3rq41" path="res://assets/Enemies/Enemy1/tiny_ship11.png" id="8_sbpet"]
+
+[sub_resource type="GDScript" id="GDScript_m7g0p"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Level_2" type="Node2D"]
+script = SubResource("GDScript_m7g0p")
+
+[node name="Nebula" type="Sprite2D" parent="."]
+position = Vector2(575, 324)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_gngyp")
+metadata/_edit_group_ = true
+
+[node name="CanvasGroup" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="TextureProgressBar" parent="CanvasGroup"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 16.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+texture_over = ExtResource("2_mnubq")
+texture_progress = ExtResource("3_5f7fd")
+script = ExtResource("4_823mw")
+player_node = NodePath("../../Player")
+
+[node name="Dash" type="ProgressBar" parent="CanvasGroup"]
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 194.0
+offset_bottom = 39.0
+script = ExtResource("5_mgxdm")
+player_node = NodePath("../../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_pu1u6")]
+position = Vector2(581, 281)
+
+[node name="Enemy1" parent="." instance=ExtResource("7_fol70")]
+position = Vector2(599, 390)
+
+[node name="TinyShip11" type="Sprite2D" parent="."]
+position = Vector2(648, 276)
+texture = ExtResource("8_sbpet")
