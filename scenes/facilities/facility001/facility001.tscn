@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvu11pxuxrujc"]
+
+[ext_resource type="Script" path="res://scripts/facilities/facility001/facility001.gd" id="1_bg5rh"]
+[ext_resource type="Texture2D" uid="uid://tne56666axwo" path="res://icon.svg" id="1_mdaic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jc23m"]
+size = Vector2(102, 102)
+
+[node name="Base1" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_bg5rh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_mdaic")
+
+[node name="colshape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jc23m")

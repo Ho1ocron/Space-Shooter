@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8bin1p5suble"]
+
+[ext_resource type="Theme" uid="uid://58jxxgtp7ruy" path="res://assets/UI/themes/main_menu_theme.tres" id="1_v04jd"]
+[ext_resource type="Script" path="res://scripts/gui/settings.gd" id="1_x4qh2"]
+[ext_resource type="Texture2D" uid="uid://dvthtird25ix5" path="res://assets/BackGround/Starfields/Starfield_01-1024x1024.png" id="2_dv5jo"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6b6ol"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_71v8n"]
+events = [SubResource("InputEventKey_6b6ol")]
+
+[node name="Settings" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x4qh2")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 0.866667, 1, 1)
+self_modulate = Color(0.188235, 0.278431, 1, 1)
+top_level = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1152.0
+grow_vertical = 2
+theme = ExtResource("1_v04jd")
+
+[node name="Fullscreen" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 68.0
+offset_right = 721.0
+offset_bottom = 143.0
+text = "Fullscreen"
+
+[node name="Back" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 136.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_71v8n")
+text = "<"
+
+[node name="Starfield01-1024x1024" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("2_dv5jo")
+
+[connection signal="pressed" from="Panel/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="Panel/Back" to="." method="_on_back_pressed"]

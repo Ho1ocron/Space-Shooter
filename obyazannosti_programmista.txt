@@ -1,7 +1,0 @@
-1. Все объекты, по которым должен проходить урон, должны иметь collision layer 2 и реализовывать метод take_damage(damage: int)
-Пример:
-@export_category("HP")
-@export var max_hp = 100
-@export var hp = max_hp
-func take_damage(damage: int):
-	hp -= damage
