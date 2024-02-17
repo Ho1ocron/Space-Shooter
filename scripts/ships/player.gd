@@ -1,6 +1,4 @@
 extends ship_base 
-
-
 var DashForce = 10000
 var DashChargeMax = 100
 var DashCharge = DashChargeMax
@@ -62,6 +60,10 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	position = position.clamp(Vector2.ZERO, screen_size)
+	
+	if Input.is_action_pressed("Shoot"):
+		gun_left.try_shoot()
+		gun_right.try_shoot()
 
 
 func _on_dash_cooldown():

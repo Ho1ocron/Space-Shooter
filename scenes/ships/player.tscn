@@ -8,8 +8,9 @@
 colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
 
 [node name="player" type="CharacterBody2D"]
+top_level = true
 rotation = 1.5708
-collision_mask = 3
+collision_mask = 32
 motion_mode = 1
 script = ExtResource("1_0mwce")
 gunResource = ExtResource("2_qdc75")

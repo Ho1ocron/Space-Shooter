@@ -65,7 +65,6 @@ script = ExtResource("5_8yrev")
 player_node = NodePath("../../Player")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("17_iwrao")]
-top_level = true
 position = Vector2(480, 335)
 
 [node name="Settings" parent="." instance=ExtResource("8_ulnsj")]
@@ -93,8 +92,6 @@ position = Vector2(386, 501)
 
 [node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
 position = Vector2(576, 324)
-collision_layer = 3
-collision_mask = 2
 
 [node name="PurpleNebula08-1024x1024" type="Sprite2D" parent="."]
 position = Vector2(-527, 390)
@@ -102,9 +99,6 @@ texture = ExtResource("15_5etp0")
 
 [node name="ship" parent="." instance=ExtResource("16_hlaji")]
 position = Vector2(611, 171)
-
-[node name="player" parent="." instance=ExtResource("17_iwrao")]
-position = Vector2(702, 337)
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
 [connection signal="timeout" from="SettingsTimer" to="." method="_on_settings_timer_timeout"]

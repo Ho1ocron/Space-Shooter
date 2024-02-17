@@ -63,5 +63,6 @@ func hurt():
 	got_damage.emit()
 
 func _process(delta):
-	gun_left.try_shoot() # УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ
-	gun_right.try_shoot()
+	#gun_left.try_shoot() # УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ
+	#gun_right.try_shoot()
+	pass
