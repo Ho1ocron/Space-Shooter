@@ -1,8 +1,8 @@
 extends StaticBody2D
 
 
-@export var Max_HP = 100
-var HP = Max_HP
+@export var max_hp = 100
+var hp = max_hp
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,4 +13,4 @@ func _process(delta):
 	pass
 
 func take_damage(damage: int):
-	HP -= damage
+	hp -= damage

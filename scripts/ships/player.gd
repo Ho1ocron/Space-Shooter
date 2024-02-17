@@ -9,6 +9,7 @@ var dashing = false
 var dash_direction = Vector2()
 @onready var screen_size = get_viewport_rect().size
 
+
 func common_movingF(): #: "F" means Function
 	if not Input.is_action_pressed("StopRotation"):
 		rotation = lerp_angle(rotation, (get_viewport().get_mouse_position() - global_position).angle()+PI/2, rotation_speed) #: Rotating player if button Alt isn't being pressed 
@@ -60,6 +61,10 @@ func _physics_process(delta):
 	common_movingF()
 	#inertiaF(delta)
 	move_and_slide()
+	
+	if Input.is_action_pressed("Shoot"):
+		gun_left.try_shoot()
+		gun_right.try_shoot()
 	
 	position = position.clamp(Vector2.ZERO, screen_size)
 

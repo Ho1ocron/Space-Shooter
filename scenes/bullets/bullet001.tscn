@@ -1,15 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cv3x4jxw0o1an"]
 
-[ext_resource type="Script" path="res://scripts/bullets/bullet001.gd" id="1_i56dg"]
-[ext_resource type="Texture2D" uid="uid://bw0wc3rcehbg7" path="res://assets/Player/PlayerSprites/bullet.png" id="1_qqr1c"]
+[ext_resource type="Script" path="res://scripts/bullets/bullet001.gd" id="1_q4yce"]
+[ext_resource type="Texture2D" uid="uid://bw0wc3rcehbg7" path="res://assets/Player/PlayerSprites/bullet.png" id="2_yhjd8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k24ku"]
 radius = 3.0
 
-[node name="bullet" type="Area2D"]
+[node name="bullet001" type="Area2D"]
 collision_layer = 0
-collision_mask = 2
-script = ExtResource("1_i56dg")
+script = ExtResource("1_q4yce")
 
 [node name="OnScreen" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
@@ -20,7 +19,7 @@ shape = SubResource("CircleShape2D_k24ku")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.01, 0.01)
-texture = ExtResource("1_qqr1c")
+texture = ExtResource("2_yhjd8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="OnScreen" to="." method="_on_on_screen_screen_exited"]

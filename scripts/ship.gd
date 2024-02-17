@@ -27,6 +27,9 @@ var max_tick = 31
 var tick = 0
 const acceleration = 1
 
+@export_flags_2d_physics var bullet_target: int
+#@export_flags_2d_physics var bullet_target = (1 << 1) | (1 << 2) # 2, 3
+
 #var screen_size = get_viewport_rect().size
 
 func _enter_tree():
@@ -37,8 +40,12 @@ func _enter_tree():
 		add_child(gun_right)
 		gun_left.owner = self
 		gun_right.owner = self
+		#gun_left.transform = $gunpos_left.transform
+		#gun_right.transform = $gunpos_right.transform
 		gun_left.global_transform = $gunpos_left.global_transform
 		gun_right.global_transform = $gunpos_right.global_transform
+		gun_left.bullet_target = bullet_target
+		gun_right.bullet_target = bullet_target
 
 func take_damage(damage: int):
 	hp -= damage
@@ -63,5 +70,6 @@ func hurt():
 	got_damage.emit()
 
 func _process(delta):
-	gun_left.try_shoot() # УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ
-	gun_right.try_shoot()
+	pass
+	#gun_left.try_shoot() # УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ
+	#gun_right.try_shoot()
