@@ -78,6 +78,10 @@ func hurt():
 	print("smt")
 
 
+func moving():
+	velocity = owner.direction * SPEED
+
+
 func _process(delta):
 	pass
 	#gun_left.try_shoot() # УБИВАТЬ УБИВАТЬ УБИВАТЬ УБИВАТЬ

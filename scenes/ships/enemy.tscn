@@ -13,11 +13,6 @@ collision_mask = 512
 motion_mode = 1
 script = ExtResource("1_typ2i")
 bullet_target = 2
-SPEED = null
-MAX_SPEED = null
-RESISTANCE = null
-isPlayer = null
-TWOGUNS = null
 gunResource = ExtResource("2_11jc0")
 
 [node name="colshape" type="CollisionPolygon2D" parent="."]
