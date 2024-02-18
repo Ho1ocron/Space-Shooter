@@ -1,0 +1,205 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpvb08ytxb0su"]
+
+[ext_resource type="FontFile" uid="uid://4jvnfaabhj7u" path="res://assets/Fonts/Xolonium-Regular.ttf" id="1_lte07"]
+[ext_resource type="Theme" uid="uid://58jxxgtp7ruy" path="res://assets/UI/themes/main_menu_theme.tres" id="2_ekvy4"]
+[ext_resource type="PackedScene" uid="uid://ct0l47jftgf1p" path="res://scenes/levels/level001/level001.tscn" id="2_kpgsh"]
+[ext_resource type="Texture2D" uid="uid://b2eyqixugevbh" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_Menu/Start_BTN.png" id="3_4bdj1"]
+[ext_resource type="PackedScene" uid="uid://da5e8soes3xkx" path="res://scenes/levels/level002/level002.tscn" id="3_y04ar"]
+[ext_resource type="Texture2D" uid="uid://dvthtird25ix5" path="res://assets/BackGround/Starfields/Starfield_01-1024x1024.png" id="5_00xpu"]
+[ext_resource type="PackedScene" uid="uid://c8bin1p5suble" path="res://scenes/gui/settings/settings.tscn" id="6_4qtp4"]
+[ext_resource type="PackedScene" uid="uid://cupv5odrd035s" path="res://scenes/gui/settings/levels.tscn" id="7_32nc3"]
+
+[sub_resource type="GDScript" id="GDScript_kp27y"]
+script/source = "extends Control
+
+var isFullscreen = false
+var isWindowed = true
+
+#var levels = [\"\", \"res://Scenes/WorldScene/level1/level1.tscn\", \"res://Scenes/WorldScene/Level2/Level2.tscn\"]
+@export var levels: Array[PackedScene]
+
+func _ready():
+	#$Panel/Layer2.hide()
+#	$Panel/SettingsPanel.hide()
+	pass
+
+
+func _on_start_button_pressed():
+	#get_tree().change_scene_to_file(levels[0])
+	get_tree().change_scene_to_packed(levels[0])
+
+
+func _on_load_button_pressed():
+	$Panel.hide()
+	$Levels.show()
+
+
+func _on_change_level(id: int):
+	get_tree().change_scene_to_packed(levels[id])
+
+
+func _on_new_game_button_pressed():
+	pass
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func _on_settings_pressed():
+	$Panel.hide()
+	$Settings.show()
+
+
+func _on_fullscreen_pressed():
+	if isFullscreen == false:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		$Panel/SettingsPanel/Fullscreen.text = \"Windowed\"
+		isFullscreen = true
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		$Panel/SettingsPanel/Fullscreen.text = \"Fullscreen\"
+		isFullscreen = false
+
+
+
+func _on_settings_settings_back():
+	$Panel.show()
+
+
+func _on_levels_level_back():
+	$Panel.show()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_rii57"]
+font_size = 50
+font_color = Color(0.976471, 0.854902, 0.898039, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_dtvhi"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_c2gr0"]
+device = -1
+keycode = 4194310
+
+[sub_resource type="Shortcut" id="Shortcut_clq6n"]
+events = [SubResource("InputEventKey_dtvhi"), SubResource("InputEventKey_c2gr0")]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ekvy4")
+script = SubResource("GDScript_kp27y")
+levels = Array[PackedScene]([ExtResource("2_kpgsh"), ExtResource("3_y04ar")])
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 0.866667, 1, 1)
+self_modulate = Color(0.188235, 0.278431, 1, 1)
+top_level = true
+clip_contents = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1152.0
+grow_vertical = 2
+theme = ExtResource("2_ekvy4")
+
+[node name="SpaceShooter" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.0
+offset_right = 204.0
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "Space Shooter"
+label_settings = SubResource("LabelSettings_rii57")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Layer1" type="Panel" parent="Panel"]
+self_modulate = Color(1, 0.866667, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ekvy4")
+
+[node name="NewGameButton" type="Button" parent="Panel/Layer1"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 215.0
+offset_right = 448.0
+offset_bottom = 344.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("2_ekvy4")
+icon = ExtResource("3_4bdj1")
+
+[node name="StartButton" type="Button" parent="Panel/Layer1"]
+clip_contents = true
+layout_mode = 2
+offset_left = 30.0
+offset_top = 300.0
+offset_right = 280.0
+offset_bottom = 375.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("2_ekvy4")
+theme_override_fonts/font = ExtResource("1_lte07")
+shortcut = SubResource("Shortcut_clq6n")
+text = "Continue"
+icon_alignment = 1
+expand_icon = true
+
+[node name="LoadButton" type="Button" parent="Panel/Layer1"]
+layout_mode = 2
+offset_left = 30.0
+offset_top = 385.0
+offset_right = 280.0
+offset_bottom = 460.0
+theme = ExtResource("2_ekvy4")
+text = "Load Level"
+
+[node name="Fighters" type="Button" parent="Panel/Layer1"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 470.0
+offset_right = 280.0
+offset_bottom = 545.0
+text = "Fighters"
+
+[node name="Settings" type="Button" parent="Panel/Layer1"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 555.0
+offset_right = 280.0
+offset_bottom = 630.0
+text = "Settings
+"
+
+[node name="Levels" parent="." instance=ExtResource("7_32nc3")]
+visible = false
+layout_mode = 1
+
+[node name="Settings" parent="." instance=ExtResource("6_4qtp4")]
+visible = false
+layout_mode = 1
+
+[node name="Starfield01-1024x1024" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("5_00xpu")
+
+[connection signal="pressed" from="Panel/Layer1/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="Panel/Layer1/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/Layer1/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Panel/Layer1/Settings" to="." method="_on_settings_pressed"]
+[connection signal="change_level" from="Levels" to="." method="_on_change_level"]
+[connection signal="level_back" from="Levels" to="." method="_on_levels_level_back"]
+[connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]

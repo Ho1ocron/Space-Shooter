@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwe5l3ooqsi2i"]
+
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_5bx0c"]
+[ext_resource type="PackedScene" uid="uid://cv3x4jxw0o1an" path="res://scenes/bullets/bullet001.tscn" id="2_g12eb"]
+[ext_resource type="Texture2D" uid="uid://d1bjfn361gpif" path="res://assets/Player/PlayerSprites/Gun2.png" id="2_x0fhk"]
+
+[node name="gun" type="Node2D"]
+script = ExtResource("1_5bx0c")
+attack_speed = 100.0
+rotation_speed = 0.1
+bullet_node = ExtResource("2_g12eb")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_x0fhk")
+
+[node name="cooldown" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown"]
