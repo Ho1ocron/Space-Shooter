@@ -2,6 +2,7 @@ extends Node2D
 
 
 @export var base_damage = 1
+@export var attack_speed = 0
 var can_shoot = false
 @export var bullet_node: PackedScene
 ## Target of bullet.
@@ -27,3 +28,6 @@ func _process(delta):
 
 func _on_cooldown():
 	can_shoot = true
+
+func _ready():
+	$cooldown.wait_time = attack_speed
