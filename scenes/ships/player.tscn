@@ -9,10 +9,12 @@ colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.02745
 
 [node name="player" type="CharacterBody2D"]
 rotation = 1.5708
-collision_mask = 3
+collision_layer = 262
+collision_mask = 256
 motion_mode = 1
 script = ExtResource("1_0mwce")
 gunResource = ExtResource("2_qdc75")
+bullet_target = 1
 
 [node name="colshape" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(4, -22, 24, 14, 24, 22, 12, 20, -12, 20, -24, 22, -24, 14, -4, -22)

@@ -78,8 +78,12 @@ ESC={
 
 [layer_names]
 
-2d_physics/layer_1="Physic"
-2d_physics/layer_2="Taking damage"
+2d_physics/layer_1="Player Bullet"
+2d_physics/layer_2="Enemy Bullet"
+2d_physics/layer_3="Neutral Bullet"
+2d_physics/layer_9="Player Physic"
+2d_physics/layer_10="Enemy Physic"
+2d_physics/layer_11="Neutral Physic"
 
 [physics]
 
