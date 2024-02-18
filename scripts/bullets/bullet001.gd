@@ -5,10 +5,13 @@ extends Area2D
 @export var canPenetrate: bool # Может ли пуля проходить сквозь объекты
 
 var screen_size
+var rng = RandomNumberGenerator.new()
 
 
 func _ready():
+	$LifeTime.start()
 	screen_size = get_viewport_rect().size
+	$sprite.rotation = rng.randf_range(0.0, 360.0)
 
 
 func quit():
@@ -34,3 +37,7 @@ func _on_body_entered(body):
 	
 	if not canPenetrate: # Если значение true: пуля может проходить насковзь, если false - нет
 		queue_free()
+
+
+func _on_life_time_timeout():
+	queue_free()

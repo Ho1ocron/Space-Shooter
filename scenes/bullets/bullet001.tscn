@@ -9,6 +9,7 @@ radius = 3.0
 [node name="bullet001" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_q4yce")
+speed = 20
 damage = 1
 
 [node name="OnScreen" type="VisibleOnScreenEnabler2D" parent="."]
@@ -22,5 +23,9 @@ shape = SubResource("CircleShape2D_k24ku")
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("2_yhjd8")
 
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 60.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="OnScreen" to="." method="_on_on_screen_screen_exited"]
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

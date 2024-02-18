@@ -77,38 +77,18 @@ volume_db = -20.0
 [node name="Enemy1" parent="." instance=ExtResource("13_qat1y")]
 position = Vector2(884, 271)
 max_hp = null
-SPEED = null
-MAX_SPEED = null
-RESISTANCE = null
-isPlayer = null
-TWOGUNS = null
 
 [node name="Enemy2" parent="." instance=ExtResource("13_qat1y")]
 position = Vector2(645, 417)
 max_hp = null
-SPEED = null
-MAX_SPEED = null
-RESISTANCE = null
-isPlayer = null
-TWOGUNS = null
 
 [node name="Enemy3" parent="." instance=ExtResource("13_qat1y")]
 position = Vector2(461, 206)
 max_hp = null
-SPEED = null
-MAX_SPEED = null
-RESISTANCE = null
-isPlayer = null
-TWOGUNS = null
 
 [node name="Enemy4" parent="." instance=ExtResource("13_qat1y")]
 position = Vector2(386, 501)
 max_hp = null
-SPEED = null
-MAX_SPEED = null
-RESISTANCE = null
-isPlayer = null
-TWOGUNS = null
 
 [node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
 position = Vector2(576, 324)
@@ -119,6 +99,27 @@ texture = ExtResource("15_5etp0")
 
 [node name="player" parent="." instance=ExtResource("17_iwrao")]
 position = Vector2(428, 324)
+
+[node name="enemy" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(471, 437)
+
+[node name="enemy2" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(783, 376)
+
+[node name="enemy3" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(310, 427)
+
+[node name="enemy4" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(752, 275)
+
+[node name="enemy5" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(563, 174)
+
+[node name="enemy6" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(730, 176)
+
+[node name="enemy7" parent="." instance=ExtResource("13_qat1y")]
+position = Vector2(247, 266)
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
 [connection signal="timeout" from="SettingsTimer" to="." method="_on_settings_timer_timeout"]
