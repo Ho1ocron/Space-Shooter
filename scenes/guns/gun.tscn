@@ -6,6 +6,8 @@
 
 [node name="gun" type="Node2D"]
 script = ExtResource("1_5bx0c")
+attack_speed = 20.0
+rotation_speed = 0.1
 bullet_node = ExtResource("2_g12eb")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -13,7 +15,7 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_x0fhk")
 
 [node name="cooldown" type="Timer" parent="."]
-wait_time = 0.25
+wait_time = 0.001
 one_shot = true
 autostart = true
 
