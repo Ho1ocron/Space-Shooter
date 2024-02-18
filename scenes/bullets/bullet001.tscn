@@ -9,8 +9,7 @@ radius = 3.0
 [node name="bullet001" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_q4yce")
-damage = 5
-canPenetrate = true
+damage = 1
 
 [node name="OnScreen" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-2.38419e-07, 0)
