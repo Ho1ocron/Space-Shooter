@@ -12,7 +12,7 @@ collision_layer = 1799
 collision_mask = 1792
 motion_mode = 1
 script = ExtResource("1_hhhqk")
-max_hp = 100
+max_hp = 500
 gunResource = ExtResource("2_qccf5")
 
 [node name="colshape" type="CollisionPolygon2D" parent="."]

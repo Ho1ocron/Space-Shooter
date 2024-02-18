@@ -6,7 +6,7 @@ signal got_damage
 signal dash_charge
 
 @export_category("HP")
-@export var max_hp: int
+@export var max_hp = 100 # Какого то фига не работает @export var max_hp: int, почему-то он постоянно = 0, даже когда не 0
 @export_flags_2d_physics var bullet_target: int
 @export var SPEED = 500
 @export var MAX_SPEED = 1000
@@ -24,7 +24,7 @@ var gun_right: Node2D
 var rotation_speed = 0.1
 var max_tick = 31
 var tick = 0
-var hp = 100 #max_hp
+var hp = max_hp
 var doStop = false
 var resistanceEnabled = true
 
@@ -37,6 +37,7 @@ const acceleration = 1
 
 func _enter_tree():
 	if TWOGUNS:
+		print(hp)
 		gun_left = gunResource.instantiate()
 		gun_right = gunResource.instantiate()
 		

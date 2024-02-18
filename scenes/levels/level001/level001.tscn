@@ -119,7 +119,6 @@ texture = ExtResource("15_5etp0")
 
 [node name="player" parent="." instance=ExtResource("17_iwrao")]
 position = Vector2(428, 324)
-max_hp = 0
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
 [connection signal="timeout" from="SettingsTimer" to="." method="_on_settings_timer_timeout"]
