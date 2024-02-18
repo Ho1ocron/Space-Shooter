@@ -5,8 +5,8 @@ signal got_damage
 signal dash_charge
 
 @export_category("HP")
-@export var max_hp = 100
-@export var hp = max_hp
+@export var max_hp: int
+var hp = max_hp
 
 @export var gunResource: PackedScene
 #@onready var settings = preload("res://Scenes/MainScene/Settings/settings.tscn")

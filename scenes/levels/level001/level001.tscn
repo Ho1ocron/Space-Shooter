@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=15 format=3 uid="uid://ct0l47jftgf1p"]
 
 [ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
 [ext_resource type="Texture2D" uid="uid://dllr3oa3fh38p" path="res://assets/Player/PlayerSprites/HPBar/tile000.png" id="2_s81yj"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://ng6spwn17u5x" path="res://scenes/ships/enemy.tscn" id="13_qat1y"]
 [ext_resource type="PackedScene" uid="uid://bvu11pxuxrujc" path="res://scenes/facilities/facility001/facility001.tscn" id="14_ghmx7"]
 [ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
-[ext_resource type="PackedScene" uid="uid://mybpsn08cccm" path="res://scenes/ships/ship.tscn" id="16_hlaji"]
 [ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="17_iwrao"]
 
 [node name="Level_1" type="Node2D"]
@@ -93,9 +92,6 @@ position = Vector2(576, 324)
 [node name="PurpleNebula08-1024x1024" type="Sprite2D" parent="."]
 position = Vector2(-527, 390)
 texture = ExtResource("15_5etp0")
-
-[node name="ship" parent="." instance=ExtResource("16_hlaji")]
-position = Vector2(611, 171)
 
 [node name="player" parent="." instance=ExtResource("17_iwrao")]
 position = Vector2(428, 324)
