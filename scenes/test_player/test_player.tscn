@@ -7,3 +7,6 @@
 script = ExtResource("1_ch2th")
 
 [node name="ship" parent="." instance=ExtResource("1_gchyd")]
+collision_layer = 262
+collision_mask = 256
+bullet_target = 1
