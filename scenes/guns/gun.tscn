@@ -6,7 +6,7 @@
 
 [node name="gun" type="Node2D"]
 script = ExtResource("1_5bx0c")
-attack_speed = 20.0
+attack_speed = 10.0
 rotation_speed = 0.1
 bullet_node = ExtResource("2_g12eb")
 

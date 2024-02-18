@@ -1,5 +1,6 @@
 extends ship_base 
 
+@onready var screen_size = get_viewport_rect().size
 
 var DashForce = 10000
 var DashChargeMax = 100
@@ -7,7 +8,6 @@ var DashCharge = DashChargeMax
 var can_dash = true
 var dashing = false
 var dash_direction = Vector2()
-@onready var screen_size = get_viewport_rect().size
 
 
 func common_movingF(): #: "F" means Function

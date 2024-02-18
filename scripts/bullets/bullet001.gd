@@ -1,12 +1,10 @@
 extends Area2D
 
 @export var speed = 1500
-
+@export var damage: int
 @export var canPenetrate: bool # Может ли пуля проходить сквозь объекты
 
 var screen_size
-var damage = 1
-
 
 
 func _ready():
@@ -32,6 +30,7 @@ func _on_on_screen_screen_exited():
 
 func _on_body_entered(body):
 	body.take_damage(damage)
+	print("damage: ", damage)
 	
 	if not canPenetrate: # Если значение true: пуля может проходить насковзь, если false - нет
 		queue_free()
