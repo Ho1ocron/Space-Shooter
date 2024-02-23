@@ -1,0 +1,13 @@
+[configuration]
+
+entry_symbol = "space_library_init"
+compatibility_minimum = "4.1"
+
+[libraries]
+
+
+#linux.debug.x86_32 = "res://bin/libspaceext.linux.template_debug.x86_32.so"
+#linux.release.x86_32 = "res://bin/libspaceext.linux.template_release.x86_32.so"
+linux.debug.x86_64 = "res://bin/libspaceext.linux.template_debug.dev.x86_64.so"
+#linux.release.x86_64 = "res://bin/libspaceext.linux.template_release.x86_64.so"
+
