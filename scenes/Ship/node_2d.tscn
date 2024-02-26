@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://oxjwe5pqr5es"]
+[gd_scene load_steps=3 format=3 uid="uid://mymbddt1yuf6"]
 
 [ext_resource type="Texture2D" uid="uid://bu14pqtw1c6t2" path="res://icon.svg" id="1_1iemo"]
+[ext_resource type="Script" path="res://node_2d.gd" id="1_4pxgu"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_4pxgu")
 
 [node name="MyExample" type="MyExample" parent="."]
 position = Vector2(19.9257, 8.78341)
