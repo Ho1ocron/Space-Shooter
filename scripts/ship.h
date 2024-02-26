@@ -7,7 +7,7 @@
 #endif
 
 
-#include <godot_cpp/classes/sprite2d.hpp>
+#include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/classes/input_event_key.hpp>
 #include <godot_cpp/classes/input.hpp>
 #include <godot_cpp/core/binder_common.hpp>
@@ -16,9 +16,9 @@
 using namespace godot;
 
 
-class Ship : public Sprite2D 
+class Ship : public CharacterBody2D 
 {
-    GDCLASS(Ship, Sprite2D)
+    GDCLASS(Ship, CharacterBody2D)
 
     private:
         double time_passed;

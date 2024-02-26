@@ -24,11 +24,11 @@ void Ship::_process(double delta) {
 
     Input* input = Input::get_singleton();
 
-    if (input->is_key_pressed(KEY_W)) {
+    if (input->is_key_pressed(KEY_S)) {
         set_position(Vector2(10.0 + (10.0 * sin(time_passed * 2.0)), 10.0 + (10.0 * cos(time_passed * 2.0))));
     }
 
-    if (input->is_key_pressed(KEY_A)) {
+    if (input->is_key_pressed(KEY_D)) {
         set_position(Vector2(576.0, 324.0));
     }
 }
