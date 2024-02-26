@@ -12,6 +12,7 @@
 #include <godot_cpp/godot.hpp>
 
 #include "example.h"
+#include "ship.h"
 #include "tests.h"
 
 using namespace godot;
@@ -22,6 +23,7 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 	}
 
 	ClassDB::register_class<MyExample>();
+	ClassDB::register_class<Ship>();
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {
