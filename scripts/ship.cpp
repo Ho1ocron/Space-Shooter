@@ -10,7 +10,7 @@ void Ship::_bind_methods() {
 
 
 Ship::Ship() {
-
+    int a;
 }
 
 
