@@ -91,6 +91,12 @@ position = Vector2(386, 501)
 [node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
 position = Vector2(576, 324)
 
+[node name="MyExample" type="MyExample" parent="Base1"]
+speed = 20.0
+position = Vector2(-9.31284, 127.661)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("16_2ycrb")
+
 [node name="PurpleNebula08-1024x1024" type="Sprite2D" parent="."]
 position = Vector2(-527, 390)
 texture = ExtResource("15_5etp0")
@@ -100,13 +106,6 @@ position = Vector2(611, 171)
 
 [node name="player" parent="." instance=ExtResource("17_iwrao")]
 position = Vector2(428, 324)
-
-[node name="MyExample" type="MyExample" parent="player"]
-speed = 17.96
-position = Vector2(121.069, 41.5491)
-rotation = -1.5708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("16_2ycrb")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(842, 452)

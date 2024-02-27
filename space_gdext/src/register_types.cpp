@@ -12,20 +12,23 @@
 #include <godot_cpp/godot.hpp>
 
 #include "example.h"
+// #include "damageable.h"
+#include "ship.h"
 #include "tests.h"
 
-using namespace godot;
+// using namespace godot;
 
-void initialize_space_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+void initialize_space_module(godot::ModuleInitializationLevel p_level) {
+	if (p_level != godot::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 
-	ClassDB::register_class<MyExample>();
+	godot::ClassDB::register_class<MyExample>();
+	godot::ClassDB::register_class<ShipBase>();
 }
 
-void uninitialize_space_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+void uninitialize_space_module(godot::ModuleInitializationLevel p_level) {
+	if (p_level != godot::MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 }
