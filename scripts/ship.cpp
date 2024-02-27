@@ -10,7 +10,7 @@ void Ship::_bind_methods() {
 
 
 Ship::Ship() {
-    
+
 }
 
 
@@ -19,6 +19,6 @@ Ship::~Ship() {
 }
 
 
-void Ship::_physics_process(double delta) {
+void Ship::_process(double delta) {
     
 }
