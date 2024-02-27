@@ -1,0 +1,7 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "type_traits": "cpp",
+        "cmath": "cpp"
+    }
+}

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cr4v5c1wcin5q"]
+
+[ext_resource type="Texture2D" uid="uid://4bxtg58etass" path="res://src/Sprites/Ship/tiny_ship15.png" id="1_xl6ia"]
+
+[node name="Ship" type="Ship"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xl6ia")
+
+[node name="col" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-17.1385, 23.634, -13.1385, 23.634, -0.138506, 5.634, 12.8615, 23.634, 16.8615, 23.634, 36.8615, 14.634, 36.8615, 7.634, 18.8615, -10.366, 16.8615, -20.366, 8.86149, -24.366, -9.13851, -24.366, -17.1385, -20.366, -19.1385, -10.366, -37.1385, 7.634, -37.1385, 13.634)
