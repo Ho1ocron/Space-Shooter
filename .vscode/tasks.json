@@ -15,7 +15,7 @@
                     "platform=windows",
                     "generate_bindings=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "linux": {
@@ -24,7 +24,7 @@
                     "platform=linux",
                     "generate_bindings=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "problemMatcher": "$msCompile"
@@ -43,7 +43,7 @@
                     "platform=windows",
                     "generate_bindings=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "linux": {
@@ -52,7 +52,7 @@
                     "platform=linux",
                     "generate_bindings=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "problemMatcher": "$msCompile"
@@ -71,7 +71,7 @@
                     "platform=windows",
                     "dev_build=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "linux": {
@@ -80,7 +80,7 @@
                     "platform=linux",
                     "dev_build=yes",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "problemMatcher": "$msCompile"
@@ -98,7 +98,7 @@
                     "target=template_release",
                     "platform=windows",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "linux": {
@@ -106,7 +106,7 @@
                     "target=template_release",
                     "platform=linux",
                     "-s",
-                    "-j9"
+                    "-j8"
                 ]
             },
             "problemMatcher": "$msCompile"
