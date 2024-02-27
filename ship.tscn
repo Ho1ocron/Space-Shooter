@@ -1,14 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc4k1ri4uw33m"]
+[gd_scene load_steps=3 format=3 uid="uid://bc4k1ri4uw33m"]
 
-[ext_resource type="Texture2D" uid="uid://4bxtg58etass" path="res://src/Sprites/Ship/tiny_ship15.png" id="1_xl6ia"]
+[ext_resource type="Texture2D" uid="uid://qwa30smqdmkq" path="res://assets/Sprites/Ship/tiny_ship14.png" id="1_fvq1u"]
+
+[sub_resource type="Gradient" id="Gradient_nvitg"]
+offsets = PackedFloat32Array(0, 0.310345, 1)
+colors = PackedColorArray(0.909804, 0.819608, 0.164706, 1, 0.940906, 0.582961, 0.163354, 0.655172, 1, 0.133333, 0.160784, 0)
 
 [node name="Ship" type="Ship"]
-position = Vector2(14.1972, 0.923484)
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_xl6ia")
+texture = ExtResource("1_fvq1u")
 
 [node name="col" type="CollisionPolygon2D" parent="."]
 visible = false
-polygon = PackedVector2Array(-17.1385, 23.634, -13.1385, 23.634, -0.138506, 5.634, 12.8615, 23.634, 16.8615, 23.634, 36.8615, 14.634, 36.8615, 7.634, 18.8615, -10.366, 16.8615, -20.366, 8.86149, -24.366, -9.13851, -24.366, -17.1385, -20.366, -19.1385, -10.366, -37.1385, 7.634, -37.1385, 13.634)
+polygon = PackedVector2Array(-39, 29, -6, 17, 0, 15, 7, 17, 39, 29, 51, 29, 51, 19, 18.8615, -10.366, 13, -19, 5, -29, -5, -29, -13, -19, -19.1385, -10.366, -51, 19, -51, 29)
+
+[node name="Engine" type="CPUParticles2D" parent="."]
+rotation = 1.5708
+amount = 100
+lifetime = 1.5
+randomness = 1.0
+fixed_fps = 60
+emission_shape = 4
+emission_points = PackedVector2Array(15, 0)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_nvitg")

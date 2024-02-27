@@ -21,7 +21,6 @@ class Ship : public CharacterBody2D
     GDCLASS(Ship, CharacterBody2D)
 
     private:
-        double time_passed;
 
     protected:
         static void _bind_methods();
@@ -31,6 +30,7 @@ class Ship : public CharacterBody2D
         ~Ship();
         
         void _process(double delta) override;
+
 };
 
 #endif

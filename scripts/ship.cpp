@@ -10,7 +10,7 @@ void Ship::_bind_methods() {
 
 
 Ship::Ship() {
-    time_passed = 0.0;
+    
 }
 
 
@@ -19,16 +19,6 @@ Ship::~Ship() {
 }
 
 
-void Ship::_process(double delta) {
-    time_passed += delta;
-    if (!is_inside_tree()) {
-        // Ship node is not in the scene
-        return;
-    }
-
-    Input* input = Input::get_singleton();
-
-    if (input->is_key_pressed(KEY_A)) { set_position(Vector2(10.0 + (10.0 * sin(time_passed * 2.0)), 10.0 + (10.0 * cos(time_passed * 2.0)))); }
-
-    if (input->is_key_pressed(KEY_S)) { set_position(Vector2(576.0, 324.0)); }
+void Ship::_physics_process(double delta) {
+    
 }
