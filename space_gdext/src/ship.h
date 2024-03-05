@@ -18,10 +18,11 @@ class ShipBase : public CharacterBody2D{
     GDCLASS(ShipBase, CharacterBody2D)
 
     public:
-        std::shared_ptr<HealthComponent> health;
-        Specifications specifications;
+        Ref<HealthComponent> health;
+        // Specifications specifications;
 
-        HealthComponent get_health_component();
+        Ref<HealthComponent> get_health_component();
+        void set_health_component(const godot::Ref<HealthComponent>&);
 
         // ShipBase(std::shared_ptr<HealthComponent> health);
         ShipBase();

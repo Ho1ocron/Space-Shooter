@@ -13,6 +13,7 @@
 
 #include "example.h"
 // #include "damageable.h"
+#include "health_component.h"
 #include "ship.h"
 #include "tests.h"
 
@@ -24,6 +25,7 @@ void initialize_space_module(godot::ModuleInitializationLevel p_level) {
 	}
 
 	godot::ClassDB::register_class<MyExample>();
+	godot::ClassDB::register_class<HealthComponent>();
 	godot::ClassDB::register_class<ShipBase>();
 }
 

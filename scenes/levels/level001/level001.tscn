@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=20 format=3 uid="uid://ct0l47jftgf1p"]
 
 [ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
 [ext_resource type="Texture2D" uid="uid://dllr3oa3fh38p" path="res://assets/Player/PlayerSprites/HPBar/tile000.png" id="2_s81yj"]
@@ -15,7 +15,11 @@
 [ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
 [ext_resource type="Texture2D" uid="uid://dvdt2rrw275kb" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Accept/Ok_BTN.png" id="16_2ycrb"]
 [ext_resource type="PackedScene" uid="uid://mybpsn08cccm" path="res://scenes/ships/ship.tscn" id="16_hlaji"]
+[ext_resource type="Texture2D" uid="uid://dn44ktrw6mrbs" path="res://assets/Player/PlayerSprites/tiny_ship12.png" id="17_18ueb"]
 [ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="17_iwrao"]
+[ext_resource type="Script" path="res://scenes/levels/level001/ShipBase.gd" id="17_l7ngb"]
+
+[sub_resource type="HealthComponent" id="HealthComponent_474qx"]
 
 [node name="Level_1" type="Node2D"]
 
@@ -93,7 +97,7 @@ position = Vector2(576, 324)
 
 [node name="MyExample" type="MyExample" parent="Base1"]
 speed = 20.0
-position = Vector2(-9.31284, 127.661)
+position = Vector2(-22.6603, 125.978)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_2ycrb")
 
@@ -109,6 +113,19 @@ position = Vector2(428, 324)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(842, 452)
+
+[node name="ShipBase" type="ShipBase" parent="."]
+health_component = SubResource("HealthComponent_474qx")
+position = Vector2(344, 273)
+collision_layer = 7
+collision_mask = 0
+script = ExtResource("17_l7ngb")
+
+[node name="colshape" type="CollisionPolygon2D" parent="ShipBase"]
+polygon = PackedVector2Array(-8, -22, 8, -22, 26, -12, 26, 16, 6, 22, -1.875, 22, -6, 22, -26, 16, -26, -12)
+
+[node name="sprite" type="Sprite2D" parent="ShipBase"]
+texture = ExtResource("17_18ueb")
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
 [connection signal="timeout" from="SettingsTimer" to="." method="_on_settings_timer_timeout"]

@@ -28,5 +28,5 @@ func _on_on_screen_screen_exited():
 # для получения урона объект должен иметь хотя бы один слой из маски пули
 # маска пули назначается отправителем пули
 func _on_body_entered(body):
-	body.take_damage(damage)
+	body.health_component.take_damage(damage)
 	queue_free()
