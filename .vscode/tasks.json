@@ -1,0 +1,115 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build godot-cpp debug",
+            "type": "shell",
+            "command": "scons",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/space_gdext/godot-cpp"
+            },
+            "windows": {
+                "args": [
+                    "target=template_debug",
+                    "platform=windows",
+                    "generate_bindings=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "target=template_debug",
+                    "platform=linux",
+                    "generate_bindings=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build godot-cpp release",
+            "type": "shell",
+            "command": "scons",
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}/space_gdext/godot-cpp"
+            },
+            "windows": {
+                "args": [
+                    "target=template_release",
+                    "platform=windows",
+                    "generate_bindings=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "target=template_release",
+                    "platform=linux",
+                    "generate_bindings=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build debug",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/space_gdext/"
+            },
+            "command": "scons",
+            "group": "build",
+            "windows": {
+                "args": [
+                    "target=template_debug",
+                    "platform=windows",
+                    "dev_build=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "target=template_debug",
+                    "platform=linux",
+                    "dev_build=yes",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build release",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/space_gdext/"
+            },
+            "command": "scons",
+            "group": "build",
+            "windows": {
+                "args": [
+                    "target=template_release",
+                    "platform=windows",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "target=template_release",
+                    "platform=linux",
+                    "-s",
+                    "-j8"
+                ]
+            },
+            "problemMatcher": "$msCompile"
+        },
+    ]
+}

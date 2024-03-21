@@ -1,0 +1,11 @@
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 4
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+ColumnLimit: 160
+PenaltyBreakAssignment: 2
+PenaltyReturnTypeOnItsOwnLine: 200
+PointerAlignment: Left
+SpaceBeforeParens: Never
+AccessModifierOffset: -4

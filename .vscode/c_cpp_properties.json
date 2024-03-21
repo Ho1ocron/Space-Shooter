@@ -4,6 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/space_gdext/godot-cpp/include/**",
                 "${workspaceFolder}/space_gdext/godot-cpp/gen/include"
             ],
             "defines": [],
