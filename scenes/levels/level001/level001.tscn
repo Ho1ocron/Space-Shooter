@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=22 format=3 uid="uid://ct0l47jftgf1p"]
 
 [ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
 [ext_resource type="Texture2D" uid="uid://dllr3oa3fh38p" path="res://assets/Player/PlayerSprites/HPBar/tile000.png" id="2_s81yj"]
@@ -10,14 +10,19 @@
 [ext_resource type="Texture2D" uid="uid://gdnux00f8fqe" path="res://assets/BackGround/Starfields/Starfield_08-1024x1024.png" id="7_j705c"]
 [ext_resource type="PackedScene" uid="uid://c8bin1p5suble" path="res://scenes/gui/settings/settings.tscn" id="8_ulnsj"]
 [ext_resource type="AudioStream" uid="uid://2xti48gde5f" path="res://assets/Music/spaceship shooter .mp3" id="11_7yij2"]
-[ext_resource type="PackedScene" uid="uid://ng6spwn17u5x" path="res://scenes/ships/enemy.tscn" id="13_qat1y"]
 [ext_resource type="PackedScene" uid="uid://bvu11pxuxrujc" path="res://scenes/facilities/facility001/facility001.tscn" id="14_ghmx7"]
 [ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
 [ext_resource type="Texture2D" uid="uid://dvdt2rrw275kb" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Accept/Ok_BTN.png" id="16_2ycrb"]
-[ext_resource type="PackedScene" uid="uid://mybpsn08cccm" path="res://scenes/ships/ship.tscn" id="16_hlaji"]
 [ext_resource type="Texture2D" uid="uid://dn44ktrw6mrbs" path="res://assets/Player/PlayerSprites/tiny_ship12.png" id="17_18ueb"]
-[ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="17_iwrao"]
 [ext_resource type="Script" path="res://scenes/levels/level001/ShipBase.gd" id="17_l7ngb"]
+[ext_resource type="Script" path="res://scripts/ships/player2.gd" id="19_ggmn3"]
+[ext_resource type="PackedScene" uid="uid://cwe5l3ooqsi2i" path="res://scenes/guns/gun.tscn" id="20_ebr6w"]
+[ext_resource type="Texture2D" uid="uid://bsutfplw87yw" path="res://assets/Player/PlayerSprites/tiny_ship1.png" id="21_2h3hm"]
+
+[sub_resource type="HealthComponent" id="HealthComponent_2wjmn"]
+
+[sub_resource type="Gradient" id="Gradient_4greh"]
+colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
 
 [sub_resource type="HealthComponent" id="HealthComponent_474qx"]
 
@@ -69,6 +74,13 @@ grow_vertical = 0
 theme = ExtResource("7_17kes")
 script = ExtResource("5_8yrev")
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasGroup"]
+offset_left = 191.0
+offset_top = 184.0
+offset_right = 432.0
+offset_bottom = 211.0
+value = 100.0
+
 [node name="Settings" parent="." instance=ExtResource("8_ulnsj")]
 visible = false
 theme = ExtResource("7_17kes")
@@ -80,24 +92,12 @@ wait_time = 0.1
 stream = ExtResource("11_7yij2")
 volume_db = -20.0
 
-[node name="Enemy1" parent="." instance=ExtResource("13_qat1y")]
-position = Vector2(884, 271)
-
-[node name="Enemy2" parent="." instance=ExtResource("13_qat1y")]
-position = Vector2(645, 417)
-
-[node name="Enemy3" parent="." instance=ExtResource("13_qat1y")]
-position = Vector2(461, 206)
-
-[node name="Enemy4" parent="." instance=ExtResource("13_qat1y")]
-position = Vector2(386, 501)
-
 [node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
 position = Vector2(576, 324)
 
 [node name="MyExample" type="MyExample" parent="Base1"]
 speed = 20.0
-position = Vector2(-22.6603, 125.978)
+position = Vector2(115.874, -54.3811)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_2ycrb")
 
@@ -105,19 +105,52 @@ texture = ExtResource("16_2ycrb")
 position = Vector2(-527, 390)
 texture = ExtResource("15_5etp0")
 
-[node name="ship" parent="." instance=ExtResource("16_hlaji")]
-position = Vector2(611, 171)
-
-[node name="player" parent="." instance=ExtResource("17_iwrao")]
-position = Vector2(428, 324)
-
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(842, 452)
+
+[node name="playership" type="ShipBase" parent="."]
+health_component = SubResource("HealthComponent_2wjmn")
+position = Vector2(318, 324)
+collision_mask = 0
+script = ExtResource("19_ggmn3")
+gunResource = ExtResource("20_ebr6w")
+bullet_target = 2
+
+[node name="colshape" type="CollisionPolygon2D" parent="playership"]
+polygon = PackedVector2Array(-8, -22, 8, -22, 26, -12, 26, 16, 6, 22, -1.875, 22, -6, 22, -26, 16, -26, -12)
+
+[node name="sprite" type="Sprite2D" parent="playership"]
+texture = ExtResource("21_2h3hm")
+
+[node name="particles_engine" type="CPUParticles2D" parent="playership"]
+position = Vector2(0, 14)
+rotation = 1.5708
+amount = 75
+randomness = 1.0
+fixed_fps = 60
+draw_order = 1
+emission_shape = 4
+emission_points = PackedVector2Array(-2, 18, -2, -18)
+emission_colors = PackedColorArray()
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_4greh")
+
+[node name="gunpos_left" type="Marker2D" parent="playership"]
+position = Vector2(-16, 4)
+scale = Vector2(-1, 1)
+
+[node name="gunpos_right" type="Marker2D" parent="playership"]
+position = Vector2(16, 4)
+
+[node name="dash_cooldown" type="Timer" parent="playership"]
+one_shot = true
 
 [node name="ShipBase" type="ShipBase" parent="."]
 health_component = SubResource("HealthComponent_474qx")
 position = Vector2(344, 273)
-collision_layer = 7
 collision_mask = 0
 script = ExtResource("17_l7ngb")
 
@@ -125,6 +158,18 @@ script = ExtResource("17_l7ngb")
 polygon = PackedVector2Array(-8, -22, 8, -22, 26, -12, 26, 16, 6, 22, -1.875, 22, -6, 22, -26, 16, -26, -12)
 
 [node name="sprite" type="Sprite2D" parent="ShipBase"]
+texture = ExtResource("17_18ueb")
+
+[node name="ShipBase2" type="ShipBase" parent="."]
+health_component = SubResource("HealthComponent_474qx")
+position = Vector2(268, 271)
+collision_mask = 0
+script = ExtResource("17_l7ngb")
+
+[node name="colshape" type="CollisionPolygon2D" parent="ShipBase2"]
+polygon = PackedVector2Array(-8, -22, 8, -22, 26, -12, 26, 16, 6, 22, -1.875, 22, -6, 22, -26, 16, -26, -12)
+
+[node name="sprite" type="Sprite2D" parent="ShipBase2"]
 texture = ExtResource("17_18ueb")
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
