@@ -7,5 +7,5 @@ ColumnLimit: 160
 PenaltyBreakAssignment: 2
 PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
-SpaceBeforeParens: Never
+# SpaceBeforeParens: Never
 AccessModifierOffset: -4
