@@ -10,7 +10,7 @@ bullet_node = ExtResource("2_g12eb")
 
 [node name="sprite" type="Sprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2(1.25, 1.25)
+scale = Vector2(0.101517, 0.25)
 texture = ExtResource("3_jq41d")
 
 [node name="cooldown" type="Timer" parent="."]

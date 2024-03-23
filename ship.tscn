@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc4k1ri4uw33m"]
+[gd_scene load_steps=5 format=3 uid="uid://bc4k1ri4uw33m"]
 
 [ext_resource type="Texture2D" uid="uid://qwa30smqdmkq" path="res://assets/Sprites/Ship/tiny_ship14.png" id="1_fvq1u"]
+
+[sub_resource type="HealthComponent" id="HealthComponent_8638n"]
+
+[sub_resource type="Specifications" id="Specifications_fq3ar"]
 
 [sub_resource type="Gradient" id="Gradient_nvitg"]
 offsets = PackedFloat32Array(0, 0.310345, 1)
 colors = PackedColorArray(0.909804, 0.819608, 0.164706, 1, 0.940906, 0.582961, 0.163354, 0.655172, 1, 0.133333, 0.160784, 0)
 
-[node name="Ship" type="Ship"]
+[node name="Ship" type="ShipBase"]
+health_component = SubResource("HealthComponent_8638n")
+specifications = SubResource("Specifications_fq3ar")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

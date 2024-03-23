@@ -9,7 +9,8 @@
 
 using namespace godot;
 
-struct Specifications : public Resource {
+struct Specifications : public Resource 
+{
     GDCLASS(Specifications, Resource)
 
     unsigned int speed;
@@ -34,7 +35,9 @@ protected:
     static void _bind_methods();
 };
 
-class ShipBase : public CharacterBody2D {
+
+class ShipBase : public CharacterBody2D 
+{
     GDCLASS(ShipBase, CharacterBody2D)
 
 public:
@@ -43,6 +46,7 @@ public:
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);
+    
     Ref<Specifications> get_specifications();
     void set_specifications(const godot::Ref<Specifications>&);
 
@@ -53,5 +57,6 @@ public:
 protected:
     static void _bind_methods();
 };
+
 
 #endif  // SHIP_CLASS_H

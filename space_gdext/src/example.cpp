@@ -10,7 +10,7 @@
 
 using namespace godot;
 
-void MyExample::_bind_methods(){
+void MyExample::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_speed"), &MyExample::get_speed);
 	ClassDB::bind_method(D_METHOD("set_speed", "p_speed"), &MyExample::set_speed);
     ClassDB::add_property("MyExample", PropertyInfo(Variant::FLOAT, "speed", PROPERTY_HINT_RANGE, "0,20,0.01"), "set_speed", "get_speed");

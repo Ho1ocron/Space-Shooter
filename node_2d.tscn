@@ -5,5 +5,5 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="MyExample" type="MyExample" parent="."]
-position = Vector2(-102.391, -76.8126)
+position = Vector2(-127.984, 2.05319)
 texture = ExtResource("1_1iemo")

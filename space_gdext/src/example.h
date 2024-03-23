@@ -20,6 +20,8 @@
 
 using namespace godot;
 
+
+
 class MyExample : public Sprite2D {
     GDCLASS(MyExample, Sprite2D)
     private:

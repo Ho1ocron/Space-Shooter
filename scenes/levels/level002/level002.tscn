@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://da5e8soes3xkx"]
+[gd_scene load_steps=10 format=3 uid="uid://da5e8soes3xkx"]
 
 [ext_resource type="Texture2D" uid="uid://b20ildu7n7g1c" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_05-1024x1024.png" id="1_gngyp"]
 [ext_resource type="Texture2D" uid="uid://dm7mrdowfgvo6" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_2.png" id="2_mnubq"]
@@ -22,8 +22,6 @@ func _ready():
 func _process(delta):
 	pass
 "
-
-[sub_resource type="Specifications" id="Specifications_s758g"]
 
 [node name="level" type="Node2D"]
 script = SubResource("GDScript_m7g0p")
@@ -58,7 +56,6 @@ offset_bottom = 39.0
 script = ExtResource("5_mgxdm")
 
 [node name="Player" parent="." instance=ExtResource("2_pu1u6")]
-specifications = SubResource("Specifications_s758g")
 position = Vector2(581, 281)
 
 [node name="Enemy1" parent="." instance=ExtResource("7_fol70")]
@@ -66,6 +63,7 @@ position = Vector2(599, 390)
 
 [node name="TinyShip11" type="Sprite2D" parent="."]
 position = Vector2(960, 333)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_66fuf")
 
 [node name="Marker2D" type="Marker2D" parent="TinyShip11"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://wu5ueni3h82"]
+[gd_scene load_steps=7 format=3 uid="uid://wu5ueni3h82"]
 
 [ext_resource type="Script" path="res://scripts/ships/player.gd" id="1_0mwce"]
 [ext_resource type="Texture2D" uid="uid://ho8ftpculy4x" path="res://assets/Sprites/Ship/tiny_ship1.png" id="2_lp7md"]
 [ext_resource type="PackedScene" uid="uid://cwe5l3ooqsi2i" path="res://scenes/guns/gun.tscn" id="2_qdc75"]
+[ext_resource type="Texture2D" uid="uid://qwa30smqdmkq" path="res://assets/Sprites/Ship/tiny_ship14.png" id="4_ablq0"]
 
 [sub_resource type="HealthComponent" id="HealthComponent_cwn4t"]
 
@@ -39,6 +40,7 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_hqcrx")
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_lp7md")
 
 [node name="gunpos_left" type="Marker2D" parent="."]
@@ -51,5 +53,10 @@ position = Vector2(16, 4)
 
 [node name="dash_cooldown" type="Timer" parent="."]
 one_shot = true
+
+[node name="sprite2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_ablq0")
 
 [connection signal="timeout" from="dash_cooldown" to="." method="_on_dash_cooldown"]

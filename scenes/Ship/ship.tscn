@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cr4v5c1wcin5q"]
+[gd_scene load_steps=4 format=3 uid="uid://cr4v5c1wcin5q"]
 
-[ext_resource type="Texture2D" uid="uid://4bxtg58etass" path="res://src/Sprites/Ship/tiny_ship15.png" id="1_xl6ia"]
+[ext_resource type="Texture2D" uid="uid://4bxtg58etass" path="res://assets/Sprites/Ship/tiny_ship15.png" id="1_xl6ia"]
 
-[node name="Ship" type="Ship"]
+[sub_resource type="HealthComponent" id="HealthComponent_krcmu"]
+
+[sub_resource type="Specifications" id="Specifications_6rdlq"]
+
+[node name="Ship" type="ShipBase"]
+health_component = SubResource("HealthComponent_krcmu")
+specifications = SubResource("Specifications_6rdlq")
 
 [node name="sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

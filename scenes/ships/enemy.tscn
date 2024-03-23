@@ -35,6 +35,7 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_hqcrx")
 
 [node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_ybxg1")
 
 [node name="gunpos_left" type="Marker2D" parent="."]
