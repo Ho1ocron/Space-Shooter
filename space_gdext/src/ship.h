@@ -18,9 +18,10 @@ struct Specifications : public Resource
     unsigned int rotation_speed;
     unsigned int max_hp;
 
-    Vector2 left_lightgun_pos;
+    Vector2 left_lightgun_pos; 
     Vector2 right_lightgun_pos;
     Vector2 hardgun_pos;
+
 
     Vector2 get_left_lightgun_pos();
     void set_left_lightgun_pos(const Vector2& other);
@@ -41,8 +42,11 @@ class ShipBase : public CharacterBody2D
     GDCLASS(ShipBase, CharacterBody2D)
 
 public:
+
     Ref<HealthComponent> health;
     Ref<Specifications> specifications;
+
+    Vector2 direction;
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);
@@ -53,6 +57,11 @@ public:
     // ShipBase(std::shared_ptr<HealthComponent> health);
     ShipBase();
     ~ShipBase();
+
+    //void _physics_process(double delta);
+
+    Vector2 get_direction();
+    void set_direction(Vector2 direction);
 
 protected:
     static void _bind_methods();

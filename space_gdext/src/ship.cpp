@@ -16,11 +16,23 @@ Ref<Specifications> ShipBase::get_specifications() { return Ref<Specifications>(
 void ShipBase::set_specifications(const Ref<Specifications>& other) { specifications = other; }
 
 
+void ShipBase::set_direction(Vector2 dir) {
+    set_position(dir);
+}
+
+
+Vector2 ShipBase::get_direction() {
+    return this->direction;
+}
+
+
 void ShipBase::_bind_methods() {
     godot::ClassDB::bind_method(godot::D_METHOD("get_health_component"), &ShipBase::get_health_component);
     godot::ClassDB::bind_method(godot::D_METHOD("set_health_component", "health_component"), &ShipBase::set_health_component);
     godot::ClassDB::bind_method(godot::D_METHOD("get_specifications"), &ShipBase::get_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("set_specifications", "specifications"), &ShipBase::set_specifications);
+    godot::ClassDB::bind_method(godot::D_METHOD("get_direction"), &ShipBase::get_direction);
+    godot::ClassDB::bind_method(godot::D_METHOD("set_direction"), &ShipBase::set_direction);
 
     godot::ClassDB::add_property("ShipBase",
                                  godot::PropertyInfo(Variant::OBJECT, "health_component", PROPERTY_HINT_RESOURCE_TYPE, "HealthComponent",
@@ -31,11 +43,21 @@ void ShipBase::_bind_methods() {
                                  godot::PropertyInfo(Variant::OBJECT, "specifications", PROPERTY_HINT_RESOURCE_TYPE, "Specifications",
                                                      PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT),
                                  "set_specifications", "get_specifications");
+
+    godot::ClassDB::add_property (   
+        "ShipBase",
+        godot::PropertyInfo(Variant::VECTOR2, "direction"),
+        "set_direction", "get_direction"
+    );
 }
 
 
 ShipBase::ShipBase() {}
 ShipBase::~ShipBase() {}
+
+
+
+
 
 Vector2 Specifications::get_left_lightgun_pos() { return left_lightgun_pos; }
 void Specifications::set_left_lightgun_pos(const Vector2& other) { left_lightgun_pos = other; }
@@ -57,6 +79,5 @@ void Specifications::_bind_methods() {
     godot::ClassDB::add_property("Specifications", godot::PropertyInfo(Variant::VECTOR2, "right_lightgun_pos"), "get_right_lightgun_pos",
                                  "set_right_lightgun_pos");
 }
-
 
 #endif  // SHIP_CLASS_CPP

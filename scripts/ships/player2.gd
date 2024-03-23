@@ -61,7 +61,7 @@ func common_movingF(): #: "F" means Function
 		var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down") #: Getting moving direction
 		velocity = direction * SPEED #: Moving player
 		#direction = direction.normalized()
-		var tmp = Vector2.ZERO
+		#var tmp = Vector2.ZERO
 		
 		if rad_to_deg(velocity.angle_to(direction)) > 136 || rad_to_deg(velocity.angle_to(direction)) < -136:
 			pass
@@ -86,6 +86,7 @@ func inertiaF(delta):
 	
 	if velocity.length() <= 3 * delta:
 		velocity = Vector2.ZERO
+	
 
 
 

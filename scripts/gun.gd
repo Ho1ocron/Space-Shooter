@@ -24,6 +24,7 @@ func try_shoot(): # called by ship
 		bullet.global_transform = global_transform
 		bullet.collision_mask = bullet_target
 
+
 func _process(delta):
 	look_at(get_viewport().get_mouse_position())
 	#rotation = (get_global_mouse_position() - global_position).angle()+PI/2

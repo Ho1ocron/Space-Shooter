@@ -29,6 +29,7 @@ var dashing = false
 var dash_direction = Vector2()
 @onready var screen_size = get_viewport_rect().size
 
+
 func _enter_tree():
 	if TWOGUNS:
 		gun_left = gunResource.instantiate()
@@ -43,6 +44,7 @@ func _enter_tree():
 		gun_right.global_transform = $gunpos_right.global_transform
 		gun_left.bullet_target = bullet_target
 		gun_right.bullet_target = bullet_target
+
 
 func common_movingF(): #: "F" means Function
 	if not Input.is_action_pressed("StopRotation"):
@@ -74,6 +76,11 @@ func common_movingF(): #: "F" means Function
 			#velocity += tmp * delta
 
 
+func test_moving():
+
+	pass
+
+
 func inertiaF(delta):
 	if velocity == Vector2.ZERO && velocity.length() > 5 || doStop:
 		doStop = true
@@ -91,7 +98,8 @@ func inertiaF(delta):
 
 
 func _physics_process(delta):
-	common_movingF()
+	#common_movingF()
+	test_moving()
 	#inertiaF(delta)
 	move_and_slide()
 	
