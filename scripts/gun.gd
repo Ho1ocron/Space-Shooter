@@ -19,7 +19,7 @@ func try_shoot(): # called by ship
 		
 		## что лучше? :
 		#owner.owner.add_child(bullet)
-		get_node("/root/level").add_child(bullet)
+		get_node("/root/level").add_child(bullet) # ошибка в этой строке? переименуй уровень в level
 		
 		bullet.global_transform = global_transform
 		bullet.collision_mask = bullet_target

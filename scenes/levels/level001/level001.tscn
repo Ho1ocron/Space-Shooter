@@ -1,32 +1,29 @@
-[gd_scene load_steps=22 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=20 format=3 uid="uid://ct0l47jftgf1p"]
 
-[ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
-[ext_resource type="Texture2D" uid="uid://dllr3oa3fh38p" path="res://assets/Player/PlayerSprites/HPBar/tile000.png" id="2_s81yj"]
-[ext_resource type="Texture2D" uid="uid://bka82q51gotuj" path="res://assets/Player/PlayerSprites/HPBar/tile001.png" id="3_m6dni"]
-[ext_resource type="Texture2D" uid="uid://hqki26akjiss" path="res://assets/Player/PlayerSprites/HPBar/tile002.png" id="4_dllh0"]
+[ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
+[ext_resource type="Texture2D" uid="uid://dcefhsu3yeyq3" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_1.png" id="2_s81yj"]
+[ext_resource type="Texture2D" uid="uid://dm7mrdowfgvo6" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_2.png" id="3_m6dni"]
+[ext_resource type="Texture2D" uid="uid://gnx2rdno8xs0" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_3.png" id="4_dllh0"]
 [ext_resource type="Script" path="res://scripts/gui/playerhealthbar.gd" id="4_fmiy7"]
 [ext_resource type="Script" path="res://scripts/levels/level001/Boost.gd" id="5_8yrev"]
 [ext_resource type="Theme" uid="uid://58jxxgtp7ruy" path="res://assets/UI/themes/main_menu_theme.tres" id="7_17kes"]
-[ext_resource type="Texture2D" uid="uid://gdnux00f8fqe" path="res://assets/BackGround/Starfields/Starfield_08-1024x1024.png" id="7_j705c"]
+[ext_resource type="Texture2D" uid="uid://gdnux00f8fqe" path="res://assets/Sprites/BackGround/Starfields/Starfield_08-1024x1024.png" id="7_j705c"]
 [ext_resource type="PackedScene" uid="uid://c8bin1p5suble" path="res://scenes/gui/settings/settings.tscn" id="8_ulnsj"]
 [ext_resource type="AudioStream" uid="uid://2xti48gde5f" path="res://assets/Music/spaceship shooter .mp3" id="11_7yij2"]
 [ext_resource type="PackedScene" uid="uid://bvu11pxuxrujc" path="res://scenes/facilities/facility001/facility001.tscn" id="14_ghmx7"]
-[ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
+[ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="14_sfjyl"]
+[ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
 [ext_resource type="Texture2D" uid="uid://dvdt2rrw275kb" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Accept/Ok_BTN.png" id="16_2ycrb"]
-[ext_resource type="Texture2D" uid="uid://dn44ktrw6mrbs" path="res://assets/Player/PlayerSprites/tiny_ship12.png" id="17_18ueb"]
+[ext_resource type="Texture2D" uid="uid://d026jjxpr4t80" path="res://assets/Sprites/Ship/tiny_ship12.png" id="17_18ueb"]
 [ext_resource type="Script" path="res://scenes/levels/level001/ShipBase.gd" id="17_l7ngb"]
-[ext_resource type="Script" path="res://scripts/ships/player2.gd" id="19_ggmn3"]
-[ext_resource type="PackedScene" uid="uid://cwe5l3ooqsi2i" path="res://scenes/guns/gun.tscn" id="20_ebr6w"]
-[ext_resource type="Texture2D" uid="uid://bsutfplw87yw" path="res://assets/Player/PlayerSprites/tiny_ship1.png" id="21_2h3hm"]
-
-[sub_resource type="HealthComponent" id="HealthComponent_2wjmn"]
-
-[sub_resource type="Gradient" id="Gradient_4greh"]
-colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
 
 [sub_resource type="HealthComponent" id="HealthComponent_474qx"]
 
-[node name="Level_1" type="Node2D"]
+[sub_resource type="Specifications" id="Specifications_hsf53"]
+
+[sub_resource type="Specifications" id="Specifications_rikpt"]
+
+[node name="level" type="Node2D"]
 
 [node name="Nebula" type="Sprite2D" parent="."]
 visibility_layer = 2
@@ -97,7 +94,7 @@ position = Vector2(576, 324)
 
 [node name="MyExample" type="MyExample" parent="Base1"]
 speed = 20.0
-position = Vector2(115.874, -54.3811)
+position = Vector2(-8.9645, 127.686)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_2ycrb")
 
@@ -108,48 +105,12 @@ texture = ExtResource("15_5etp0")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(842, 452)
 
-[node name="playership" type="ShipBase" parent="."]
-health_component = SubResource("HealthComponent_2wjmn")
-position = Vector2(318, 324)
-collision_mask = 0
-script = ExtResource("19_ggmn3")
-gunResource = ExtResource("20_ebr6w")
-bullet_target = 2
-
-[node name="colshape" type="CollisionPolygon2D" parent="playership"]
-polygon = PackedVector2Array(-8, -22, 8, -22, 26, -12, 26, 16, 6, 22, -1.875, 22, -6, 22, -26, 16, -26, -12)
-
-[node name="sprite" type="Sprite2D" parent="playership"]
-texture = ExtResource("21_2h3hm")
-
-[node name="particles_engine" type="CPUParticles2D" parent="playership"]
-position = Vector2(0, 14)
-rotation = 1.5708
-amount = 75
-randomness = 1.0
-fixed_fps = 60
-draw_order = 1
-emission_shape = 4
-emission_points = PackedVector2Array(-2, 18, -2, -18)
-emission_colors = PackedColorArray()
-gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 50.0
-scale_amount_max = 3.0
-color_ramp = SubResource("Gradient_4greh")
-
-[node name="gunpos_left" type="Marker2D" parent="playership"]
-position = Vector2(-16, 4)
-scale = Vector2(-1, 1)
-
-[node name="gunpos_right" type="Marker2D" parent="playership"]
-position = Vector2(16, 4)
-
-[node name="dash_cooldown" type="Timer" parent="playership"]
-one_shot = true
+[node name="player" parent="." instance=ExtResource("14_sfjyl")]
+position = Vector2(320, 410)
 
 [node name="ShipBase" type="ShipBase" parent="."]
 health_component = SubResource("HealthComponent_474qx")
+specifications = SubResource("Specifications_hsf53")
 position = Vector2(344, 273)
 collision_mask = 0
 script = ExtResource("17_l7ngb")
@@ -162,6 +123,7 @@ texture = ExtResource("17_18ueb")
 
 [node name="ShipBase2" type="ShipBase" parent="."]
 health_component = SubResource("HealthComponent_474qx")
+specifications = SubResource("Specifications_rikpt")
 position = Vector2(268, 271)
 collision_mask = 0
 script = ExtResource("17_l7ngb")

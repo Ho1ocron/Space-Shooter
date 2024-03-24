@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://da5e8soes3xkx"]
+[gd_scene load_steps=12 format=3 uid="uid://da5e8soes3xkx"]
 
 [ext_resource type="Texture2D" uid="uid://b20ildu7n7g1c" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_05-1024x1024.png" id="1_gngyp"]
 [ext_resource type="Texture2D" uid="uid://dm7mrdowfgvo6" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_2.png" id="2_mnubq"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/gui/playerhealthbar.gd" id="4_823mw"]
 [ext_resource type="Script" path="res://scripts/levels/level001/Boost.gd" id="5_mgxdm"]
 [ext_resource type="PackedScene" uid="uid://ng6spwn17u5x" path="res://scenes/ships/enemy.tscn" id="7_fol70"]
+[ext_resource type="Script" path="res://scripts/ships/player.gd" id="7_n03lr"]
 [ext_resource type="Texture2D" uid="uid://jn0jkhvbv5ey" path="res://assets/Sprites/Ship/tiny_ship6.png" id="8_66fuf"]
 
 [sub_resource type="GDScript" id="GDScript_m7g0p"]
@@ -59,6 +60,7 @@ script = ExtResource("5_mgxdm")
 
 [node name="Player" parent="." instance=ExtResource("2_pu1u6")]
 position = Vector2(278, 352)
+script = ExtResource("7_n03lr")
 
 [node name="Enemy1" parent="." instance=ExtResource("7_fol70")]
 specifications = SubResource("Specifications_7xwtw")

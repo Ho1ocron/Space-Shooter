@@ -6,66 +6,44 @@
 #include <memory>
 
 #include "health_component.h"
+#include "specifications.h"
 
 using namespace godot;
 
-
-struct Specifications : public Resource 
-{
-    GDCLASS(Specifications, Resource) 
-public:
-    unsigned int speed;
-    unsigned int max_speed;
-    unsigned int rotation_speed;
-    unsigned int max_hp;
-
-    Vector2 left_lightgun_pos; 
-    Vector2 right_lightgun_pos;
-    Vector2 hardgun_pos;
-
-    //Positions of guns
-    Vector2 get_left_lightgun_pos();
-    void set_left_lightgun_pos(const Vector2& other);
-    Vector2 get_right_lightgun_pos();
-    void set_right_lightgun_pos(const Vector2& other);
-    Vector2 get_hardgun_pos();
-    void set_hardgun_pos(const Vector2& other);
-
-    //Speed and acceleration
-    //unsigned int get_speed();
-    //void set_speed(const unsigned int& sp);
-
-
-    Specifications() : speed(speed), rotation_speed(rotation_speed) {}
-    Specifications(unsigned int speed, unsigned int rotation_speed) : speed(speed), rotation_speed(rotation_speed) {}
-
-protected:
-    static void _bind_methods();
-};
-
-
-class ShipBase : public CharacterBody2D 
-{
+class ShipBase : public CharacterBody2D {
     GDCLASS(ShipBase, CharacterBody2D)
     Vector2 direction;
-    
 
 public:
-
     Ref<HealthComponent> health;
     Ref<Specifications> specifications;
+    NodePath left_lightgun;
+    NodePath right_lightgun;
+    NodePath hardgun;
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);
-    
+
     Ref<Specifications> get_specifications();
     void set_specifications(const godot::Ref<Specifications>&);
 
-    // ShipBase(std::shared_ptr<HealthComponent> health);
+    NodePath get_left_lightgun();
+    void set_left_lightgun(const godot::NodePath&);
+    NodePath get_right_lightgun();
+    void set_right_lightgun(const godot::NodePath&);
+    NodePath get_hardgun();
+    void set_hardgun(const godot::NodePath&);
+
+    void apply_specifications();
+    // this int should be here
+    void _editor_apply_specifications(int);
+    ShipBase(Ref<HealthComponent> health, Ref<Specifications> specifications) : health(health), specifications(specifications) {}
     ShipBase();
     ~ShipBase();
 
-    //void _physics_process(double delta);
+    bool _false() { return false; }
+
+    // void _physics_process(double delta);
 
     Vector2 get_direction();
     void set_direction(Vector2 dir);
@@ -75,6 +53,5 @@ public:
 protected:
     static void _bind_methods();
 };
-
 
 #endif  // SHIP_CLASS_H
