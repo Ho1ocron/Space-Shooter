@@ -22,6 +22,8 @@ struct Specifications : public Resource
     Vector2 right_lightgun_pos;
     Vector2 hardgun_pos;
 
+   
+
 
     Vector2 get_left_lightgun_pos();
     void set_left_lightgun_pos(const Vector2& other);
@@ -40,13 +42,15 @@ protected:
 class ShipBase : public CharacterBody2D 
 {
     GDCLASS(ShipBase, CharacterBody2D)
+    Vector2 direction;
+    
 
 public:
 
     Ref<HealthComponent> health;
     Ref<Specifications> specifications;
 
-    Vector2 direction;
+    
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);
@@ -61,7 +65,9 @@ public:
     //void _physics_process(double delta);
 
     Vector2 get_direction();
-    void set_direction(Vector2 direction);
+    void set_direction(Vector2 dir);
+
+    void _process(double delta);
 
 protected:
     static void _bind_methods();

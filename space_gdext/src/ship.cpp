@@ -17,12 +17,17 @@ void ShipBase::set_specifications(const Ref<Specifications>& other) { specificat
 
 
 void ShipBase::set_direction(Vector2 dir) {
-    set_position(dir);
+    this->direction = dir;
 }
 
 
 Vector2 ShipBase::get_direction() {
     return this->direction;
+}
+
+
+void ShipBase::_process(double delta) {
+    move_and_collide(this->direction);
 }
 
 
