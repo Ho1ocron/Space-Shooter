@@ -27,7 +27,13 @@ Vector2 ShipBase::get_direction() {
 
 
 void ShipBase::_process(double delta) {
-    move_and_collide(this->direction*700*delta);
+    if (specifications==nullptr) {
+        ERR_FAIL_NULL(specifications);
+        move_and_collide(this->direction * 500 * delta);
+    } else {
+        //move_and_collide(this->direction.normalized() * specifications->speed * delta);
+        move_and_collide(this->direction.normalized() * 500 * delta);
+    }
 }
 
 

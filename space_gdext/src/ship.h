@@ -9,6 +9,7 @@
 
 using namespace godot;
 
+
 struct Specifications : public Resource 
 {
     GDCLASS(Specifications, Resource) 
@@ -22,16 +23,21 @@ public:
     Vector2 right_lightgun_pos;
     Vector2 hardgun_pos;
 
-
+    //Positions of guns
     Vector2 get_left_lightgun_pos();
     void set_left_lightgun_pos(const Vector2& other);
     Vector2 get_right_lightgun_pos();
     void set_right_lightgun_pos(const Vector2& other);
     Vector2 get_hardgun_pos();
     void set_hardgun_pos(const Vector2& other);
-    
-private:
-    Specifications(unsigned int speed = 0, unsigned int rotation_speed = 0) : speed(speed), rotation_speed(rotation_speed) {}
+
+    //Speed and acceleration
+    //unsigned int get_speed();
+    //void set_speed(const unsigned int& sp);
+
+
+    Specifications() : speed(speed), rotation_speed(rotation_speed) {}
+    Specifications(unsigned int speed, unsigned int rotation_speed) : speed(speed), rotation_speed(rotation_speed) {}
 
 protected:
     static void _bind_methods();
@@ -48,8 +54,6 @@ public:
 
     Ref<HealthComponent> health;
     Ref<Specifications> specifications;
-
-    
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);

@@ -6,7 +6,7 @@ signal dash_charge()
 @export var gunResource: PackedScene
 var gun_left: Node2D
 var gun_right: Node2D
-@export var SPEED = 500
+@export var SPEED: int
 @export var MAX_SPEED = 1000
 @export var MYCURVE: Curve
 @export var RESISTANCE = 500
@@ -81,6 +81,8 @@ func test_moving():
 		rotation = lerp_angle(rotation, (get_viewport().get_mouse_position() - global_position).angle()+PI/2, rotation_speed) #: Rotating player if button Alt isn't being pressed 
 	direction = Vector2(500, 500)
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	#direction = direction.normalized()
+	print(SPEED)
 
 
 	#print(direction)
@@ -104,7 +106,7 @@ func inertiaF(delta):
 
 
 func _physics_process(delta):
-	test_moving()
+	test_moving()	
 	#common_movingF()
 	#inertiaF(delta)
 	#move_and_slide()

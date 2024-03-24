@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wu5ueni3h82"]
+[gd_scene load_steps=8 format=3 uid="uid://wu5ueni3h82"]
 
 [ext_resource type="Script" path="res://scripts/ships/player.gd" id="1_0mwce"]
 [ext_resource type="Texture2D" uid="uid://ho8ftpculy4x" path="res://assets/Sprites/Ship/tiny_ship1.png" id="2_lp7md"]
@@ -7,11 +7,14 @@
 
 [sub_resource type="HealthComponent" id="HealthComponent_cwn4t"]
 
+[sub_resource type="Specifications" id="Specifications_byb1c"]
+
 [sub_resource type="Gradient" id="Gradient_hqcrx"]
 colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
 
 [node name="player" type="ShipBase"]
 health_component = SubResource("HealthComponent_cwn4t")
+specifications = SubResource("Specifications_byb1c")
 rotation = 1.5708
 collision_layer = 262
 collision_mask = 256
