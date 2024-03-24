@@ -27,7 +27,7 @@ Vector2 ShipBase::get_direction() {
 
 
 void ShipBase::_process(double delta) {
-    move_and_collide(this->direction);
+    move_and_collide(this->direction*700*delta);
 }
 
 

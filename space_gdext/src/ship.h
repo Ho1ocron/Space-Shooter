@@ -11,8 +11,8 @@ using namespace godot;
 
 struct Specifications : public Resource 
 {
-    GDCLASS(Specifications, Resource)
-
+    GDCLASS(Specifications, Resource) 
+public:
     unsigned int speed;
     unsigned int max_speed;
     unsigned int rotation_speed;
@@ -22,8 +22,6 @@ struct Specifications : public Resource
     Vector2 right_lightgun_pos;
     Vector2 hardgun_pos;
 
-   
-
 
     Vector2 get_left_lightgun_pos();
     void set_left_lightgun_pos(const Vector2& other);
@@ -31,7 +29,8 @@ struct Specifications : public Resource
     void set_right_lightgun_pos(const Vector2& other);
     Vector2 get_hardgun_pos();
     void set_hardgun_pos(const Vector2& other);
-
+    
+private:
     Specifications(unsigned int speed = 0, unsigned int rotation_speed = 0) : speed(speed), rotation_speed(rotation_speed) {}
 
 protected:
