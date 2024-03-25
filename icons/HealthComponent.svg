@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   height="16"
+   viewBox="0 0 16 16"
+   width="16"
+   version="1.1"
+   id="svg1819"
+   sodipodi:docname="HealthComponent.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1823" />
+  <sodipodi:namedview
+     id="namedview1821"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="34.736621"
+     inkscape:cx="4.60609"
+     inkscape:cy="7.4417141"
+     inkscape:window-width="1920"
+     inkscape:window-height="969"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1819" />
+  <path
+     d="M 2.4060657,6.0137793 C 2.4060657,3.7236331 3.0349864,1.6 4.9999999,1.6 c 1.3635912,0 1.9471608,1.2515749 3,2.3044141 C 9.0527732,2.8516408 9.6363376,1.6 11,1.6 c 1.965226,0 2.709085,2.12401 2.709085,4.4137793 0,4.9017597 -5.5939329,7.3786387 -5.5939329,7.3786387 0,0 -5.7090864,-2.266018 -5.7090864,-7.3786387 z"
+     style="fill:none;fill-opacity:1;stroke:#7df903;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+     id="path2451"
+     sodipodi:nodetypes="sscsscs" />
+</svg>
