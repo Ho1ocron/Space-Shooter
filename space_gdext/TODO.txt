@@ -1,0 +1,7 @@
+1. in _enter_tree() do:
+```
+if (Engine::get_singleton()->is_editor_hint()) {
+    set_process_internal(false);
+    set_physics_process_internal(false);
+}
+```
