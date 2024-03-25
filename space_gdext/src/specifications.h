@@ -35,7 +35,7 @@ public:
     double get_rotation_speed();
     void set_rotation_speed(const double& other);
 
-    Specifications(double speed = 1.0, double max_speed = 1.0, double rotation_speed = 6.28)
+    Specifications(double speed = 400.0, double max_speed = 400.0, double rotation_speed = 6.28)
         : speed(speed), max_speed(max_speed), rotation_speed(rotation_speed) {}
 
 protected:

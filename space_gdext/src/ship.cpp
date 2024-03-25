@@ -18,13 +18,8 @@ void ShipBase::set_direction(Vector2 dir) { this->direction = dir; }
 Vector2 ShipBase::get_direction() { return this->direction; }
 
 void ShipBase::_process(double delta) {
-    if (specifications == nullptr) {
-        ERR_FAIL_NULL(specifications);
-        // move_and_collide(this->direction * 500 * delta);
-    } else {
-        move_and_collide(this->direction.normalized() * specifications->speed * delta);
-        // move_and_collide(this->direction.normalized() * 500 * delta);
-    }
+    ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
+    move_and_collide(direction.normalized() * specifications->speed * delta);
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }
@@ -42,9 +37,16 @@ void ShipBase::apply_specifications() {
 }
 
 void ShipBase::_editor_apply_specifications(int) {
+    ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
     get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
     get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
     get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
+}
+void ShipBase::_editor_read_specifications(int) {
+    ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
+    specifications->left_lightgun_pos = get_node<Node2D>(left_lightgun)->get_position();
+    specifications->right_lightgun_pos = get_node<Node2D>(right_lightgun)->get_position();
+    specifications->hardgun_pos = get_node<Node2D>(hardgun)->get_position();
 }
 
 void ShipBase::_bind_methods() {
@@ -60,11 +62,14 @@ void ShipBase::_bind_methods() {
     godot::ClassDB::bind_method(godot::D_METHOD("set_hardgun", "specifications"), &ShipBase::set_hardgun);
     godot::ClassDB::bind_method(godot::D_METHOD("apply_specifications"), &ShipBase::apply_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_editor_apply_specifications"), &ShipBase::_editor_apply_specifications);
+    godot::ClassDB::bind_method(godot::D_METHOD("_editor_read_specifications"), &ShipBase::_editor_read_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_false"), &ShipBase::_false);
-
-    godot::ClassDB::add_property_group("ShipBase", "Components", "");
     godot::ClassDB::bind_method(godot::D_METHOD("get_direction"), &ShipBase::get_direction);
     godot::ClassDB::bind_method(godot::D_METHOD("set_direction"), &ShipBase::set_direction);
+
+    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::VECTOR2, "direction"), "set_direction", "get_direction");
+
+    godot::ClassDB::add_property_group("ShipBase", "Components", "");
 
     godot::ClassDB::add_property("ShipBase",
                                  godot::PropertyInfo(Variant::OBJECT, "health_component", PROPERTY_HINT_RESOURCE_TYPE, "HealthComponent",
@@ -75,7 +80,8 @@ void ShipBase::_bind_methods() {
                                  godot::PropertyInfo(Variant::OBJECT, "specifications", PROPERTY_HINT_RESOURCE_TYPE, "Specifications",
                                                      PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT),
                                  "set_specifications", "get_specifications");
-    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::BOOL, "apply_specs"), "_editor_apply_specifications", "_false");
+    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::BOOL, "apply_specifications"), "_editor_apply_specifications", "_false");
+    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::BOOL, "read_specifications"), "_editor_read_specifications", "_false");
 
     godot::ClassDB::add_property_group("ShipBase", "Guns", "");
     godot::ClassDB::add_property("ShipBase",
@@ -90,8 +96,6 @@ void ShipBase::_bind_methods() {
                                  godot::PropertyInfo(Variant::NODE_PATH, "hardgun", PROPERTY_HINT_RESOURCE_TYPE, "Node2D",
                                                      PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT),
                                  "set_hardgun", "get_hardgun");
-
-    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::VECTOR2, "direction"), "set_direction", "get_direction");
 }
 
 ShipBase::ShipBase() {}

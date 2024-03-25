@@ -35,13 +35,9 @@ public:
     void set_hardgun(const godot::NodePath&);
 
     void apply_specifications();
-    // this int should be here
-    void _editor_apply_specifications(int);
     ShipBase(Ref<HealthComponent> health, Ref<Specifications> specifications) : health(health), specifications(specifications) {}
     ShipBase();
     ~ShipBase();
-
-    bool _false() { return false; }
 
     // void _physics_process(double delta);
 
@@ -49,6 +45,11 @@ public:
     void set_direction(Vector2 dir);
 
     void _process(double delta);
+
+    // this int should be here
+    void _editor_apply_specifications(int);
+    void _editor_read_specifications(int);
+    bool _false() { return false; }
 
 protected:
     static void _bind_methods();
