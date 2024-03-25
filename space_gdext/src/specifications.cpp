@@ -35,9 +35,12 @@ void Specifications::_bind_methods() {
     godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::VECTOR2, "right_lightgun_pos"), "set_right_lightgun_pos",
                                  "get_right_lightgun_pos");
     godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::VECTOR2, "hardgun_pos"), "set_hardgun_pos", "get_hardgun_pos");
-    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "speed"), "set_speed", "get_speed");
-    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "max_speed"), "set_max_speed", "get_max_speed");
-    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "rotation_speed"), "set_rotation_speed", "get_rotation_speed");
+    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "speed", PROPERTY_HINT_NONE, "label:aue,suffix:units/s"),
+                                 "set_speed", "get_speed");
+    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "max_speed", PROPERTY_HINT_NONE, "suffix:units/s"),
+                                 "set_max_speed", "get_max_speed");
+    godot::ClassDB::add_property("Specifications", godot::PropertyInfo(godot::Variant::FLOAT, "rotation_speed", PROPERTY_HINT_NONE, "suffix:rads/s"),
+                                 "set_rotation_speed", "get_rotation_speed");
 }
 
 #endif  // SPECIFICATIONS_CLASS_CPP

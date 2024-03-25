@@ -11,7 +11,7 @@
 class HealthComponent : public godot::Resource {
     GDCLASS(HealthComponent, godot::Resource)
 
-    int hp, max_hp;
+    float hp, max_hp;
 
 protected:
     static void _bind_methods() {
@@ -20,28 +20,28 @@ protected:
         godot::ClassDB::bind_method(godot::D_METHOD("get_hp"), &HealthComponent::get_hp);
         godot::ClassDB::bind_method(godot::D_METHOD("set_max_hp", "max_hp"), &HealthComponent::set_max_hp);
         godot::ClassDB::bind_method(godot::D_METHOD("get_max_hp"), &HealthComponent::get_max_hp);
-        godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::INT, "hp"), "set_hp", "get_hp");
-        godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::INT, "max_hp"), "set_max_hp", "get_max_hp");
+        godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::FLOAT, "hp"), "set_hp", "get_hp");
+        godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::FLOAT, "max_hp"), "set_max_hp", "get_max_hp");
 
         ADD_SIGNAL(godot::MethodInfo("died"));
-        ADD_SIGNAL(godot::MethodInfo("taken_damage", godot::PropertyInfo(godot::Variant::INT, "damage")));
+        ADD_SIGNAL(godot::MethodInfo("taken_damage", godot::PropertyInfo(godot::Variant::FLOAT, "damage")));
     }
 
 public:
-    void take_damage(const int& damage) {
+    void take_damage(const float& damage) {
         hp -= damage;
         emit_signal("taken_damage", damage);
         if (hp <= damage) {
             emit_signal("died");
         }
     }
-    int get_hp() { return hp; }
-    void set_hp(const int& hp) { this->hp = hp; }
-    int get_max_hp() { return max_hp; }
-    void set_max_hp(const int& max_hp) { this->max_hp = max_hp; }
+    float get_hp() { return hp; }
+    void set_hp(const float& hp) { this->hp = hp; }
+    float get_max_hp() { return max_hp; }
+    void set_max_hp(const float& max_hp) { this->max_hp = max_hp; }
 
-    HealthComponent() : max_hp(100), hp(100) {}
-    HealthComponent(int hp, int max_hp) : hp(hp), max_hp(max_hp) {}
+    HealthComponent() : max_hp(100.0f), hp(100.0f) {}
+    HealthComponent(float hp, float max_hp) : hp(hp), max_hp(max_hp) {}
 };
 
 #endif

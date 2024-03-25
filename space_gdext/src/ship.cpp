@@ -19,7 +19,7 @@ Vector2 ShipBase::get_direction() { return this->direction; }
 
 void ShipBase::_process(double delta) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
-    move_and_collide(direction.normalized() * specifications->speed * delta);
+    move_and_collide(direction.limit_length(1.0f) * specifications->speed * delta);
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }
@@ -67,7 +67,8 @@ void ShipBase::_bind_methods() {
     godot::ClassDB::bind_method(godot::D_METHOD("get_direction"), &ShipBase::get_direction);
     godot::ClassDB::bind_method(godot::D_METHOD("set_direction"), &ShipBase::set_direction);
 
-    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::VECTOR2, "direction"), "set_direction", "get_direction");
+    godot::ClassDB::add_property("ShipBase", godot::PropertyInfo(Variant::VECTOR2, "direction", godot::PROPERTY_HINT_NONE, "", PROPERTY_USAGE_NO_EDITOR),
+                                 "set_direction", "get_direction");
 
     godot::ClassDB::add_property_group("ShipBase", "Components", "");
 

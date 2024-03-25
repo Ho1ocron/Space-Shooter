@@ -5,20 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://cwe5l3ooqsi2i" path="res://scenes/guns/gun.tscn" id="2_rgknw"]
 [ext_resource type="Texture2D" uid="uid://qwa30smqdmkq" path="res://assets/Sprites/Ship/tiny_ship14.png" id="4_ablq0"]
 
-[sub_resource type="HealthComponent" id="HealthComponent_cwn4t"]
+[sub_resource type="HealthComponent" id="HealthComponent_i1mky"]
 
-[sub_resource type="Specifications" id="Specifications_1k7jy"]
-left_lightgun_pos = Vector2(24, 16)
-right_lightgun_pos = Vector2(-24, 16)
-speed = 500.0
-max_speed = 500.0
+[sub_resource type="Specifications" id="Specifications_k74rt"]
+left_lightgun_pos = Vector2(-9.99996, 12)
+right_lightgun_pos = Vector2(10, 12)
+hardgun_pos = Vector2(2.89599e-05, 8)
 
 [sub_resource type="Gradient" id="Gradient_hqcrx"]
 colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
 
 [node name="player" type="ShipBase"]
-health_component = SubResource("HealthComponent_cwn4t")
-specifications = SubResource("Specifications_1k7jy")
+health_component = SubResource("HealthComponent_i1mky")
+specifications = SubResource("Specifications_k74rt")
 left_lightgun = NodePath("gunpos_left")
 right_lightgun = NodePath("gunpos_right")
 hardgun = NodePath("gunpos_hard")
@@ -28,6 +27,7 @@ collision_mask = 256
 motion_mode = 1
 script = ExtResource("1_dwkfs")
 gunResource = ExtResource("2_rgknw")
+bullet_target = 1
 
 [node name="colshape" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(4, -22, 24, 14, 24, 22, 12, 20, -12, 20, -24, 22, -24, 14, -4, -22)
@@ -53,16 +53,17 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_lp7md")
 
 [node name="gunpos_left" type="Marker2D" parent="."]
-position = Vector2(24, 16)
+position = Vector2(-10, 12)
 rotation = -3.14159
 scale = Vector2(1, -1)
 gizmo_extents = 20.0
 
 [node name="gunpos_right" type="Marker2D" parent="."]
-position = Vector2(-24, 16)
+position = Vector2(10, 12)
 gizmo_extents = 20.0
 
 [node name="gunpos_hard" type="Marker2D" parent="."]
+position = Vector2(0, 8)
 gizmo_extents = 20.0
 
 [node name="dash_cooldown" type="Timer" parent="."]

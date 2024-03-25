@@ -77,14 +77,10 @@ func common_movingF(): #: "F" means Function
 
 
 func test_moving():
-	if not Input.is_action_pressed("StopRotation"):
-		rotation = lerp_angle(rotation, (get_viewport().get_mouse_position() - global_position).angle()+PI/2, rotation_speed) #: Rotating player if button Alt isn't being pressed 
-	direction = Vector2(500, 500)
+	if not Input.is_action_pressed("StopRotation"): #                                                         METH
+		rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle()+PI/2, 1/specifications.rotation_speed) #: Rotating player if button Alt isn't being pressed 
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	#direction = direction.normalized()
 
-
-	#print(direction)
 	
 
 

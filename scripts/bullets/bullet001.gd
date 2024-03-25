@@ -3,7 +3,7 @@ extends Area2D
 @export var speed = 1500
 
 var screen_size
-var damage = 1
+var damage = 25.0/2 # две пули же
 
 
 

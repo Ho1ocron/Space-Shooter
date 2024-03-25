@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=21 format=3 uid="uid://ct0l47jftgf1p"]
 
 [ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
 [ext_resource type="Texture2D" uid="uid://dcefhsu3yeyq3" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_1.png" id="2_s81yj"]
@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://dvdt2rrw275kb" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Accept/Ok_BTN.png" id="16_2ycrb"]
 [ext_resource type="Texture2D" uid="uid://d026jjxpr4t80" path="res://assets/Sprites/Ship/tiny_ship12.png" id="17_18ueb"]
 [ext_resource type="Script" path="res://scenes/levels/level001/ShipBase.gd" id="17_l7ngb"]
+
+[sub_resource type="HealthComponent" id="HealthComponent_7b7hv"]
 
 [sub_resource type="HealthComponent" id="HealthComponent_474qx"]
 
@@ -91,10 +93,12 @@ volume_db = -20.0
 
 [node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
 position = Vector2(576, 324)
+collision_layer = 1795
+health_component = SubResource("HealthComponent_7b7hv")
 
 [node name="MyExample" type="MyExample" parent="Base1"]
 speed = 20.0
-position = Vector2(-8.9645, 127.686)
+position = Vector2(79.1119, -100.625)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("16_2ycrb")
 

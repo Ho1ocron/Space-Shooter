@@ -39,3 +39,10 @@ ios.debug = {
 ios.release = {
   "res://bin/libgodot-cpp.ios.template_release.xcframework": ""
 }
+
+
+[icons]
+
+HealthComponent = "res://icons/HealthComponent.svg"
+Specifications = "res://icons/Resource.svg"
+ShipBase = "res://icons/ShipBase.svg"
