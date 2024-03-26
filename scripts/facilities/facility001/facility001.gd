@@ -6,6 +6,8 @@ extends StaticBody2D
 func _ready():
 	health_component.connect("died", _died)
 
+func _process(delta):
+	get_node("sprite").rotate(delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _died():
