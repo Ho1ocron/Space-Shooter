@@ -27,7 +27,18 @@ Vector2 ShipBase::get_direction() { return this->direction; }
 
 void ShipBase::_process(double delta) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
-    move_and_collide(direction.limit_length(1.0f) * specifications->speed * delta);
+    // move_and_collide(direction.limit_length(1.0f) * specifications->speed * delta);
+    set_velocity(get_velocity() + direction.limit_length(1.0f) * specifications->speed * delta);
+    auto collision = move_and_collide(get_velocity() * delta);
+    if (collision != nullptr) {
+        auto reflect = collision->get_remainder().bounce(collision->get_normal());
+        // #velocity = velocity.bounce(collision.normal)*0.9;
+        // #print(velocity, velocity * collision.normal, velocity-velocity * collision.normal);
+        // #velocity += velocity.bounce(collision.normal) * collision.normal;
+        set_velocity(get_velocity().slide(collision->get_normal()));
+        set_velocity(get_velocity().limit_length(specifications->max_speed));
+        move_and_collide(reflect);
+    }
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }

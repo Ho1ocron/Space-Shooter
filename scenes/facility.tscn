@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqse04sfpv0f"]
+
+[ext_resource type="Script" path="res://scripts/facilities/facility001/facility001.gd" id="1_adnq1"]
+[ext_resource type="Texture2D" uid="uid://bu14pqtw1c6t2" path="res://icon.svg" id="2_n20wu"]
+
+[sub_resource type="HealthComponent" id="HealthComponent_4ffrq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r60xs"]
+radius = 51.0
+
+[node name="facility" type="StaticBody2D"]
+collision_layer = 1795
+collision_mask = 0
+script = ExtResource("1_adnq1")
+health_component = SubResource("HealthComponent_4ffrq")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_n20wu")
+
+[node name="colshape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_r60xs")

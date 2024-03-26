@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp8g5drc3gn5p"]
+
+[ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_wg1yb"]
+[ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="2_rjs18"]
+[ext_resource type="PackedScene" uid="uid://bqse04sfpv0f" path="res://scenes/facility.tscn" id="3_svs8g"]
+
+[node name="level" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+visibility_layer = 2
+position = Vector2(576, 324)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("1_wg1yb")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="facility" parent="." instance=ExtResource("3_svs8g")]
+position = Vector2(606, 332)
+collision_layer = 1794
+
+[node name="player" parent="." instance=ExtResource("2_rjs18")]
+position = Vector2(504.925, 276)

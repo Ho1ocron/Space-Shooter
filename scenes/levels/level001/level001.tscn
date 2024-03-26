@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ct0l47jftgf1p"]
+[gd_scene load_steps=24 format=3 uid="uid://ct0l47jftgf1p"]
 
 [ext_resource type="Texture2D" uid="uid://bsmipaehd78y" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_01-1024x1024.png" id="1_cgjed"]
 [ext_resource type="Texture2D" uid="uid://dcefhsu3yeyq3" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Main_UI/Boss_HP_Bar_1.png" id="2_s81yj"]
@@ -10,15 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://gdnux00f8fqe" path="res://assets/Sprites/BackGround/Starfields/Starfield_08-1024x1024.png" id="7_j705c"]
 [ext_resource type="PackedScene" uid="uid://c8bin1p5suble" path="res://scenes/gui/settings/settings.tscn" id="8_ulnsj"]
 [ext_resource type="AudioStream" uid="uid://2xti48gde5f" path="res://assets/Music/spaceship shooter .mp3" id="11_7yij2"]
-[ext_resource type="PackedScene" uid="uid://bvu11pxuxrujc" path="res://scenes/facilities/facility001/facility001.tscn" id="14_ghmx7"]
 [ext_resource type="PackedScene" uid="uid://wu5ueni3h82" path="res://scenes/ships/player.tscn" id="14_sfjyl"]
 [ext_resource type="Texture2D" uid="uid://bb78vgn7hfsm5" path="res://assets/Sprites/BackGround/Purple Nebula/Purple_Nebula_08-1024x1024.png" id="15_5etp0"]
-[ext_resource type="Texture2D" uid="uid://dvdt2rrw275kb" path="res://assets/UI/Space_Game_GUI_PNG/PNG/Accept/Ok_BTN.png" id="16_2ycrb"]
+[ext_resource type="PackedScene" uid="uid://bqse04sfpv0f" path="res://scenes/facility.tscn" id="16_3t8eh"]
 [ext_resource type="Texture2D" uid="uid://d026jjxpr4t80" path="res://assets/Sprites/Ship/tiny_ship12.png" id="17_18ueb"]
 [ext_resource type="Script" path="res://scenes/levels/level001/ShipBase.gd" id="17_l7ngb"]
 [ext_resource type="Shader" path="res://scenes/levels/level001/level001.gdshader" id="17_t2gl1"]
-
-[sub_resource type="HealthComponent" id="HealthComponent_7b7hv"]
 
 [sub_resource type="HealthComponent" id="HealthComponent_474qx"]
 
@@ -108,17 +105,6 @@ wait_time = 0.1
 stream = ExtResource("11_7yij2")
 volume_db = -20.0
 
-[node name="Base1" parent="." instance=ExtResource("14_ghmx7")]
-position = Vector2(576, 324)
-collision_layer = 1795
-health_component = SubResource("HealthComponent_7b7hv")
-
-[node name="MyExample" type="MyExample" parent="Base1"]
-speed = 20.0
-position = Vector2(-58.1988, -114.004)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("16_2ycrb")
-
 [node name="PurpleNebula08-1024x1024" type="Sprite2D" parent="."]
 position = Vector2(-527, 390)
 texture = ExtResource("15_5etp0")
@@ -126,16 +112,14 @@ texture = ExtResource("15_5etp0")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(842, 452)
 
-[node name="player" parent="." instance=ExtResource("14_sfjyl")]
-position = Vector2(320, 410)
-
 [node name="ShipBase" type="ShipBase" parent="."]
 health_component = SubResource("HealthComponent_474qx")
 specifications = SubResource("Specifications_hsf53")
 left_lightgun = NodePath("gunpos_left")
 right_lightgun = NodePath("gunpos_right")
 position = Vector2(377, 273)
-collision_mask = 0
+collision_layer = 257
+collision_mask = 256
 script = ExtResource("17_l7ngb")
 
 [node name="colshape" type="CollisionPolygon2D" parent="ShipBase"]
@@ -162,7 +146,8 @@ gizmo_extents = 20.0
 health_component = SubResource("HealthComponent_474qx")
 specifications = SubResource("Specifications_rikpt")
 position = Vector2(108, 208)
-collision_mask = 0
+collision_layer = 257
+collision_mask = 256
 script = ExtResource("17_l7ngb")
 
 [node name="colshape" type="CollisionPolygon2D" parent="ShipBase2"]
@@ -191,7 +176,8 @@ specifications = SubResource("Specifications_hsf53")
 left_lightgun = NodePath("gunpos_left")
 right_lightgun = NodePath("gunpos_right")
 position = Vector2(126, 418)
-collision_mask = 0
+collision_layer = 257
+collision_mask = 256
 script = ExtResource("17_l7ngb")
 
 [node name="colshape" type="CollisionPolygon2D" parent="ShipBase3"]
@@ -225,6 +211,12 @@ joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
 antialiased = true
+
+[node name="player" parent="." instance=ExtResource("14_sfjyl")]
+position = Vector2(295.473, 371.926)
+
+[node name="facility" parent="." instance=ExtResource("16_3t8eh")]
+position = Vector2(580, 364)
 
 [connection signal="settings_back" from="Settings" to="." method="_on_settings_settings_back"]
 [connection signal="timeout" from="SettingsTimer" to="." method="_on_settings_timer_timeout"]
