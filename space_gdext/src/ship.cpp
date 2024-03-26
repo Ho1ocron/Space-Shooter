@@ -71,7 +71,6 @@ void ShipBase::_bind_methods() {
     godot::ClassDB::bind_method(godot::D_METHOD("apply_specifications"), &ShipBase::apply_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_editor_apply_specifications"), &ShipBase::_editor_apply_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_editor_read_specifications"), &ShipBase::_editor_read_specifications);
-    godot::ClassDB::bind_method(godot::D_METHOD("_editor_read_specifications"), &ShipBase::_editor_read_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_false"), &ShipBase::_false);
     godot::ClassDB::bind_method(godot::D_METHOD("_on_hc_taken_damage"), &ShipBase::_on_hc_taken_damage);
     godot::ClassDB::bind_method(godot::D_METHOD("_on_hc_died"), &ShipBase::_on_hc_died);
