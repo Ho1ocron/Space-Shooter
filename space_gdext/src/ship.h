@@ -34,6 +34,9 @@ public:
     NodePath get_hardgun();
     void set_hardgun(const godot::NodePath&);
 
+    void _on_hc_taken_damage(float damage) { emit_signal("taken_damage", damage); }
+    void _on_hc_died() { emit_signal("died"); }
+
     void apply_specifications();
     ShipBase(Ref<HealthComponent> health, Ref<Specifications> specifications) : health(health), specifications(specifications) {}
     ShipBase();

@@ -23,8 +23,8 @@ protected:
         godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::FLOAT, "hp"), "set_hp", "get_hp");
         godot::ClassDB::add_property("HealthComponent", godot::PropertyInfo(godot::Variant::FLOAT, "max_hp"), "set_max_hp", "get_max_hp");
 
-        ADD_SIGNAL(godot::MethodInfo("died"));
         ADD_SIGNAL(godot::MethodInfo("taken_damage", godot::PropertyInfo(godot::Variant::FLOAT, "damage")));
+        ADD_SIGNAL(godot::MethodInfo("died"));
     }
 
 public:

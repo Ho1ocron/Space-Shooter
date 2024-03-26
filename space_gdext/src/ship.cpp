@@ -8,7 +8,15 @@
 #include "ship.h"
 
 godot::Ref<HealthComponent> ShipBase::get_health_component() { return godot::Ref<HealthComponent>(health); }
-void ShipBase::set_health_component(const godot::Ref<HealthComponent>& health) { this->health = health; }
+void ShipBase::set_health_component(const godot::Ref<HealthComponent>& other) {
+    if (this->health != nullptr) {
+        this->health->disconnect("taken_damage", godot::Callable(this, "_on_hc_taken_damage"));
+        this->health->disconnect("died", godot::Callable(this, "_on_hc_died"));
+    }
+    this->health = other;
+    this->health->connect("taken_damage", godot::Callable(this, "_on_hc_taken_damage"));
+    this->health->connect("died", godot::Callable(this, "_on_hc_died"));
+}
 
 Ref<Specifications> ShipBase::get_specifications() { return Ref<Specifications>(specifications); }
 void ShipBase::set_specifications(const Ref<Specifications>& other) { specifications = other; }
@@ -30,23 +38,23 @@ godot::NodePath ShipBase::get_hardgun() { return hardgun; }
 void ShipBase::set_hardgun(const godot::NodePath& other) { this->hardgun = other; }
 
 void ShipBase::apply_specifications() {
-    get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
-    get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
-    get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
+    if (get_node<Node2D>(left_lightgun) != nullptr) get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
+    if (get_node<Node2D>(right_lightgun) != nullptr) get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
+    if (get_node<Node2D>(hardgun) != nullptr) get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
     // тут бы еще ограничение длины velocity по новому max_speed но лень
 }
 
 void ShipBase::_editor_apply_specifications(int) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
-    get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
-    get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
-    get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
+    if (get_node<Node2D>(left_lightgun) != nullptr) get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
+    if (get_node<Node2D>(right_lightgun) != nullptr) get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
+    if (get_node<Node2D>(hardgun) != nullptr) get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
 }
 void ShipBase::_editor_read_specifications(int) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
-    specifications->left_lightgun_pos = get_node<Node2D>(left_lightgun)->get_position();
-    specifications->right_lightgun_pos = get_node<Node2D>(right_lightgun)->get_position();
-    specifications->hardgun_pos = get_node<Node2D>(hardgun)->get_position();
+    if (get_node<Node2D>(left_lightgun) != nullptr) specifications->left_lightgun_pos = get_node<Node2D>(left_lightgun)->get_position();
+    if (get_node<Node2D>(right_lightgun) != nullptr) specifications->right_lightgun_pos = get_node<Node2D>(right_lightgun)->get_position();
+    if (get_node<Node2D>(hardgun) != nullptr) specifications->hardgun_pos = get_node<Node2D>(hardgun)->get_position();
 }
 
 void ShipBase::_bind_methods() {
@@ -63,7 +71,10 @@ void ShipBase::_bind_methods() {
     godot::ClassDB::bind_method(godot::D_METHOD("apply_specifications"), &ShipBase::apply_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_editor_apply_specifications"), &ShipBase::_editor_apply_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_editor_read_specifications"), &ShipBase::_editor_read_specifications);
+    godot::ClassDB::bind_method(godot::D_METHOD("_editor_read_specifications"), &ShipBase::_editor_read_specifications);
     godot::ClassDB::bind_method(godot::D_METHOD("_false"), &ShipBase::_false);
+    godot::ClassDB::bind_method(godot::D_METHOD("_on_hc_taken_damage"), &ShipBase::_on_hc_taken_damage);
+    godot::ClassDB::bind_method(godot::D_METHOD("_on_hc_died"), &ShipBase::_on_hc_died);
     godot::ClassDB::bind_method(godot::D_METHOD("get_direction"), &ShipBase::get_direction);
     godot::ClassDB::bind_method(godot::D_METHOD("set_direction"), &ShipBase::set_direction);
 
@@ -97,6 +108,9 @@ void ShipBase::_bind_methods() {
                                  godot::PropertyInfo(Variant::NODE_PATH, "hardgun", PROPERTY_HINT_RESOURCE_TYPE, "Node2D",
                                                      PROPERTY_USAGE_DEFAULT | PROPERTY_USAGE_EDITOR_INSTANTIATE_OBJECT),
                                  "set_hardgun", "get_hardgun");
+
+    ADD_SIGNAL(godot::MethodInfo("taken_damage", godot::PropertyInfo(godot::Variant::FLOAT, "damage")));
+    ADD_SIGNAL(godot::MethodInfo("died"));
 }
 
 ShipBase::ShipBase() {}
