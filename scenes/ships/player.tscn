@@ -11,6 +11,8 @@
 left_lightgun_pos = Vector2(-9.99996, 12)
 right_lightgun_pos = Vector2(10, 12)
 hardgun_pos = Vector2(2.89599e-05, 8)
+speed = 1000.0
+max_speed = 1000.0
 
 [sub_resource type="Gradient" id="Gradient_hqcrx"]
 colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)

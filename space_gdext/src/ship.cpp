@@ -39,6 +39,11 @@ void ShipBase::_process(double delta) {
         set_velocity(get_velocity().limit_length(specifications->max_speed));
         move_and_collide(reflect);
     }
+
+    if (get_velocity().length_squared() < sqrt(0.025)) { 
+        set_velocity(Vector2(0, 0));
+        move_and_collide(Vector2(0, 0)); 
+    }
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }
