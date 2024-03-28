@@ -25,20 +25,39 @@ void ShipBase::set_direction(Vector2 dir) { this->direction = dir; }
 
 Vector2 ShipBase::get_direction() { return this->direction; }
 
-void ShipBase::_process(double delta) {
+void ShipBase::_integrate_forces(godot::PhysicsDirectBodyState2DExtension* state) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
     // move_and_collide(direction.limit_length(1.0f) * specifications->speed * delta);
-    set_velocity(get_velocity() + direction.limit_length(1.0f) * specifications->speed * delta);
-    auto collision = move_and_collide(get_velocity() * delta);
-    if (collision != nullptr) {
-        auto reflect = collision->get_remainder().bounce(collision->get_normal());
-        // #velocity = velocity.bounce(collision.normal)*0.9;
-        // #print(velocity, velocity * collision.normal, velocity-velocity * collision.normal);
-        // #velocity += velocity.bounce(collision.normal) * collision.normal;
-        set_velocity(get_velocity().slide(collision->get_normal()));
-        set_velocity(get_velocity().limit_length(specifications->max_speed));
-        move_and_collide(reflect);
+    // set_velocity(get_velocity() + direction.limit_length(1.0f) * specifications->speed * delta);
+    // auto collision = move_and_collide(get_velocity() * delta);
+    // if (collision != nullptr) {
+    //     auto reflect = collision->get_remainder().bounce(collision->get_normal());
+    //     set_velocity(get_velocity().slide(collision->get_normal()));
+    //     set_velocity(get_velocity().limit_length(specifications->max_speed));
+    //     move_and_collide(reflect);
+    // }
+    Vector2 lv = state->get_linear_velocity();
+    lv -= h_velocity;
+    h_velocity = Vector2(0.0f, 0.0f);
+    if (direction != Vector2(0.0f, 0.0f)) {
+        if (abs(lv.x) < specifications->max_speed) lv.x += direction.x * state->get_step() * specifications->speed;
+        if (abs(lv.y) < specifications->max_speed) lv.y += direction.y * state->get_step() * specifications->speed;
+    } else {  // perform slowing and stop
+        if (lv.length() <= state->get_step() * specifications->speed)
+            lv = Vector2(0.0f, 0.0f);
+        else {
+            lv.x += lv.x > 0 ? -specifications->speed * state->get_step() : specifications->speed * state->get_step();
+            lv.y += lv.y > 0 ? -specifications->speed * state->get_step() : specifications->speed * state->get_step();
+        }
     }
+    for (unsigned int i = 0; i < state->get_contact_count(); i++) {
+        h_velocity += state->get_contact_collider_velocity_at_position(i);
+    }
+    // h_velocity = state->get_contact_collider_velocity_at_position(0);
+    lv += h_velocity;
+    state->set_linear_velocity(lv);
+    // state->apply_impulse(move);
+    // state->set_linear_velocity(direction * specifications->speed);
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }

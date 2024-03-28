@@ -54,7 +54,7 @@ func common_movingF(): #: "F" means Function
 		$dash_cooldown.start()
 		dashing = true
 		dash_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-		velocity = dash_direction * DashForce
+		#velocity = dash_direction * DashForce
 		#$colshape.set_deferred("disabled", true)
 		can_dash = false
 		DashCharge -= 100

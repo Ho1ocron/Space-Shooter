@@ -18,6 +18,6 @@ var target: Node2D
 
 
 
-func _physics_process(delta):
+#func _physics_process(delta):
 	#inertiaF(delta)
-	move_and_slide()
+	#move_and_slide()

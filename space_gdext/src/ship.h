@@ -1,8 +1,10 @@
 #ifndef SHIP_CLASS_H
 #define SHIP_CLASS_H
 
-#include <godot_cpp/classes/character_body2d.hpp>
+// #include <godot_cpp/classes/character_body2d.hpp>
 #include <godot_cpp/classes/marker2d.hpp>
+#include <godot_cpp/classes/physics_direct_body_state2d_extension.hpp>
+#include <godot_cpp/classes/rigid_body2d.hpp>
 #include <memory>
 
 #include "health_component.h"
@@ -10,9 +12,12 @@
 
 using namespace godot;
 
-class ShipBase : public CharacterBody2D {
-    GDCLASS(ShipBase, CharacterBody2D)
+class ShipBase : public RigidBody2D {
+    GDCLASS(ShipBase, RigidBody2D)
     Vector2 direction;
+
+private:
+    Vector2 h_velocity{0.0f, 0.0f};
 
 public:
     Ref<HealthComponent> health;
@@ -47,7 +52,7 @@ public:
     Vector2 get_direction();
     void set_direction(Vector2 dir);
 
-    void _process(double delta);
+    void _integrate_forces(PhysicsDirectBodyState2DExtension* state);
 
     // this int should be here
     void _editor_apply_specifications(int);
