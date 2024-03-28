@@ -11,7 +11,8 @@
 left_lightgun_pos = Vector2(-9.99996, 12)
 right_lightgun_pos = Vector2(10, 12)
 hardgun_pos = Vector2(2.89599e-05, 8)
-speed = 3000.0
+speed = 1400.0
+max_speed = 1200.0
 
 [sub_resource type="Gradient" id="Gradient_hqcrx"]
 colors = PackedColorArray(0.666667, 0.776471, 0.286275, 1, 1, 0.0784314, 0.027451, 0)
@@ -25,7 +26,7 @@ hardgun = NodePath("gunpos_hard")
 rotation = 1.5708
 collision_layer = 262
 collision_mask = 256
-mass = 0.2
+mass = 0.3
 script = ExtResource("1_dwkfs")
 gunResource = ExtResource("2_rgknw")
 bullet_target = 1
@@ -54,7 +55,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_lp7md")
 
 [node name="gunpos_left" type="Marker2D" parent="."]
-position = Vector2(-10, 12)
+position = Vector2(-9.99996, 12)
 rotation = -3.14159
 scale = Vector2(1, -1)
 gizmo_extents = 20.0
@@ -64,11 +65,12 @@ position = Vector2(10, 12)
 gizmo_extents = 20.0
 
 [node name="gunpos_hard" type="Marker2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(2.89599e-05, 8)
 gizmo_extents = 20.0
 
 [node name="dash_cooldown" type="Timer" parent="."]
 one_shot = true
+autostart = true
 
 [node name="sprite2" type="Sprite2D" parent="."]
 visible = false

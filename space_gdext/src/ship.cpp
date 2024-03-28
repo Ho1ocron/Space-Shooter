@@ -27,21 +27,17 @@ Vector2 ShipBase::get_direction() { return this->direction; }
 
 void ShipBase::_integrate_forces(godot::PhysicsDirectBodyState2DExtension* state) {
     ERR_FAIL_NULL_MSG(specifications, (get_path().get_concatenated_names() + godot::StringName(": ShipBase::Specifications is null!")));
-    // move_and_collide(direction.limit_length(1.0f) * specifications->speed * delta);
-    // set_velocity(get_velocity() + direction.limit_length(1.0f) * specifications->speed * delta);
-    // auto collision = move_and_collide(get_velocity() * delta);
-    // if (collision != nullptr) {
-    //     auto reflect = collision->get_remainder().bounce(collision->get_normal());
-    //     set_velocity(get_velocity().slide(collision->get_normal()));
-    //     set_velocity(get_velocity().limit_length(specifications->max_speed));
-    //     move_and_collide(reflect);
-    // }
+
     Vector2 lv = state->get_linear_velocity();
-    lv -= h_velocity;
-    h_velocity = Vector2(0.0f, 0.0f);
     if (direction != Vector2(0.0f, 0.0f)) {
-        if (abs(lv.x) < specifications->max_speed) lv.x += direction.x * state->get_step() * specifications->speed;
-        if (abs(lv.y) < specifications->max_speed) lv.y += direction.y * state->get_step() * specifications->speed;
+        // // тут фиксить движение // ща // ща буду с сорса копировать движение, всем оставаться на своих местах
+        Vector2 tmp{direction * state->get_step() * specifications->speed};
+        float currentSpeed = lv.dot(direction.normalized());  // геймпадщикам
+        float addSpeed = specifications->max_speed - currentSpeed;
+        if (addSpeed <= 0.0f) return;
+        float accelSpeed = specifications->speed * state->get_step() * specifications->max_speed;
+        if (accelSpeed > addSpeed) accelSpeed = addSpeed * state->get_step();
+        lv += direction * accelSpeed;
     } else {  // perform slowing and stop
         if (lv.length() <= state->get_step() * specifications->speed)
             lv = Vector2(0.0f, 0.0f);
@@ -50,14 +46,8 @@ void ShipBase::_integrate_forces(godot::PhysicsDirectBodyState2DExtension* state
             lv.y += lv.y > 0 ? -specifications->speed * state->get_step() : specifications->speed * state->get_step();
         }
     }
-    for (unsigned int i = 0; i < state->get_contact_count(); i++) {
-        h_velocity += state->get_contact_collider_velocity_at_position(i);
-    }
-    // h_velocity = state->get_contact_collider_velocity_at_position(0);
-    lv += h_velocity;
+    for (unsigned int i = 0; i < state->get_contact_count(); i++) lv += state->get_contact_collider_velocity_at_position(i);
     state->set_linear_velocity(lv);
-    // state->apply_impulse(move);
-    // state->set_linear_velocity(direction * specifications->speed);
 }
 
 godot::NodePath ShipBase::get_left_lightgun() { return left_lightgun; }
@@ -71,7 +61,6 @@ void ShipBase::apply_specifications() {
     if (get_node<Node2D>(left_lightgun) != nullptr) get_node<Node2D>(left_lightgun)->set_position(specifications->left_lightgun_pos);
     if (get_node<Node2D>(right_lightgun) != nullptr) get_node<Node2D>(right_lightgun)->set_position(specifications->right_lightgun_pos);
     if (get_node<Node2D>(hardgun) != nullptr) get_node<Node2D>(hardgun)->set_position(specifications->hardgun_pos);
-    // тут бы еще ограничение длины velocity по новому max_speed но лень
 }
 
 void ShipBase::_editor_apply_specifications(int) {

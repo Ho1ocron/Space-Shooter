@@ -86,6 +86,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("7_17kes")
 script = ExtResource("5_8yrev")
+player_node = NodePath("../../player")
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasGroup"]
 offset_left = 191.0

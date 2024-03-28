@@ -14,10 +14,6 @@ using namespace godot;
 
 class ShipBase : public RigidBody2D {
     GDCLASS(ShipBase, RigidBody2D)
-    Vector2 direction;
-
-private:
-    Vector2 h_velocity{0.0f, 0.0f};
 
 public:
     Ref<HealthComponent> health;
@@ -25,6 +21,7 @@ public:
     NodePath left_lightgun;
     NodePath right_lightgun;
     NodePath hardgun;
+    Vector2 direction;
 
     Ref<HealthComponent> get_health_component();
     void set_health_component(const godot::Ref<HealthComponent>&);
